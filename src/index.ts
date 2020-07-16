@@ -1,5 +1,5 @@
 import { generatorHandler } from "@prisma/generator-helper";
-import GeneratorTOC from "./generator/toc";
+import ModelGenerator from "./generator/model";
 import transformDMMF from "./generator/transformDMMF";
 
 generatorHandler({
@@ -11,7 +11,8 @@ generatorHandler({
     };
   },
   async onGenerate(options) {
-    const test = new GeneratorTOC(transformDMMF(options.dmmf));
-    console.log(test.toHTML());
+    const dmmf = transformDMMF(options.dmmf);
+    const model = new ModelGenerator(dmmf);
+    console.log(model.toHTML());
   },
 });

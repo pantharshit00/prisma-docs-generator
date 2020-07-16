@@ -19,7 +19,7 @@ type TOCTypes = {
   enums: string[];
 };
 
-export default class GeneratorTOC implements Generatable<TOCStructure> {
+export default class TOCGenerator implements Generatable<TOCStructure> {
   data: TOCStructure;
 
   constructor(d: DMMFDocument) {

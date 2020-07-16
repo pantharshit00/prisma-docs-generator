@@ -11,14 +11,22 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+/// this is
 model Post {
-  id        Int      @default(autoincrement()) @id
+  /// this is id for the post
+  id        Int      @default(autoincrement())
   createdAt DateTime @default(now())
   title     String
   content   String?
   published Boolean  @default(false)
   author    User     @relation(fields: [authorId], references: [id])
-  authorId  Int
+  authorId  Int      @default(1)
+  @@map("posts")
+  @@id([id, authorId])
+  @@unique([authorId])
+  @@unique(name: "test", fields: [content, title])
+  @@index([id, authorId])
+  @@index([authorId, title])
 }
 
 model Profile {
