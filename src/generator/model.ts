@@ -74,39 +74,11 @@ export default class ModelGenerator
 
   getModelFields(model: DMMF.Model): MGModelField[] {
     return model.fields.map((field) => {
-      const filteredEntries = Object.entries(field).filter(([_, v]) =>
-        Boolean(v)
-      );
-      let directives: string[] = [];
-      filteredEntries.forEach(([k]) => {
-        const mappedDirectiveValue = fieldDirectiveMap.get(k);
-        if (mappedDirectiveValue) {
-          if (k === "hasDefaultValue" && field.default !== undefined) {
-            console.log(typeof field.default, field.default);
-            if (
-              typeof field.default === "string" ||
-              typeof field.default === "number" ||
-              typeof field.default === "boolean"
-            ) {
-              directives.push(`${mappedDirectiveValue}(${field.default})`);
-            }
-            if (typeof field.default === "object") {
-              directives.push(
-                `${mappedDirectiveValue}(${
-                  (field.default as FieldDefault).name
-                }(${(field.default as FieldDefault).args.join(",")}))`
-              );
-            }
-          } else {
-            directives.push(mappedDirectiveValue);
-          }
-        }
-      });
       return {
         name: field.name,
         type: this.getFieldType(field),
         documentation: (field as any).documentation,
-        directives,
+        directives: this.getFieldDirectives(field),
         required: field.isRequired,
       };
     });
@@ -121,6 +93,40 @@ export default class ModelGenerator
       name += "[]";
     }
     return name;
+  }
+
+  getFieldDirectives(field: DMMF.Field): string[] {
+    const filteredEntries = Object.entries(field).filter(([_, v]) =>
+      Boolean(v)
+    );
+
+    let directives: string[] = [];
+
+    filteredEntries.forEach(([k]) => {
+      const mappedDirectiveValue = fieldDirectiveMap.get(k);
+      if (mappedDirectiveValue) {
+        if (k === "hasDefaultValue" && field.default !== undefined) {
+          if (
+            typeof field.default === "string" ||
+            typeof field.default === "number" ||
+            typeof field.default === "boolean"
+          ) {
+            directives.push(`${mappedDirectiveValue}(${field.default})`);
+          }
+          if (typeof field.default === "object") {
+            directives.push(
+              `${mappedDirectiveValue}(${
+                (field.default as FieldDefault).name
+              }(${(field.default as FieldDefault).args.join(",")}))`
+            );
+          }
+        } else {
+          directives.push(mappedDirectiveValue);
+        }
+      }
+    });
+
+    return directives;
   }
 
   getModels(dmmfModels: DMMF.Model[]): MGModel[] {
