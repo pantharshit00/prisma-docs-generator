@@ -5,7 +5,7 @@
     "outDir": "dist",
     "module": "commonjs",
     "moduleResolution": "node",
-    "lib": ["es2019"],
+    "lib": ["es2019", "dom"], // dom is added for prismjs :(
     "strict": true,
     "esModuleInterop": true
   }

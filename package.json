@@ -6,10 +6,14 @@
   "dependencies": {
     "@prisma/cli": "^2.3.0-dev.9",
     "@prisma/client": "^2.3.0-dev.9",
-    "@prisma/generator-helper": "^2.2.0"
+    "@prisma/generator-helper": "^2.2.0",
+    "indent-string": "^4.0.0",
+    "pluralize": "^8.0.0",
+    "prismjs": "^1.20.0"
   },
   "devDependencies": {
     "@types/node": "^13.11.1",
+    "@types/prismjs": "^1.16.1",
     "ts-node": "^8.8.2",
     "typescript": "^3.8.3"
   },

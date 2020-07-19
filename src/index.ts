@@ -1,6 +1,7 @@
 import { generatorHandler } from "@prisma/generator-helper";
 import ModelGenerator from "./generator/model";
 import transformDMMF from "./generator/transformDMMF";
+import * as fs from "fs";
 
 generatorHandler({
   onManifest() {
@@ -12,7 +13,7 @@ generatorHandler({
   },
   async onGenerate(options) {
     const dmmf = transformDMMF(options.dmmf);
-    const model = new ModelGenerator(dmmf);
-    console.log(model.toHTML());
+    const modelgen = new ModelGenerator(dmmf);
+    await fs.promises.writeFile("./test.html", modelgen.toHTML());
   },
 });
