@@ -81,9 +81,9 @@ export default class ModelGenerator
     `;
   }
 
-  getModelFieldTableRow(field: MGModelField): string {
+  getModelFieldTableRow(field: MGModelField, modelName: string): string {
     return `
-    <tr>
+    <tr id="${`model-${modelName}-${field.name}`}">
       <td class="px-4 py-2 border">
        ${field.name} 
       </td>
@@ -111,10 +111,15 @@ export default class ModelGenerator
     `;
   }
 
-  getModelOperationMarkup(operation: MGModelOperation): string {
+  getModelOperationMarkup(
+    operation: MGModelOperation,
+    modelName: string
+  ): string {
     return `
                 <div class="mt-4">
-                  <h4 class="mb-2 text-lg font-bold">${operation.name}</h4>
+                  <h4 id="${`model-${modelName}-${operation.name}`}" class="mb-2 text-lg font-bold">${
+      operation.name
+    }</h4>
                   <p>${operation.description}</p>
                   <div class="mb-2">
                     <pre
@@ -158,12 +163,12 @@ export default class ModelGenerator
   toHTML() {
     return `
         <div class="mb-8">
-          <h1 class="text-3xl text-gray-800">Models</h1>
+          <h1 class="text-3xl text-gray-800" id="models">Models</h1>
             ${this.data.models
               .map(
                 (model) => `
             <div class="px-4 mb-4">
-              <h2 class="text-2xl">${model.name}</h2>
+              <h2 class="text-2xl" id="model-${model.name}">${model.name}</h2>
               ${
                 model.documentation
                   ? `<div class="mb-2">Description: ${model.documentation}</div>`
@@ -203,7 +208,9 @@ export default class ModelGenerator
                     </thead>
                     <tbody>
                     ${model.fields
-                      .map((field) => this.getModelFieldTableRow(field))
+                      .map((field) =>
+                        this.getModelFieldTableRow(field, model.name)
+                      )
                       .join("\n")}
                     </tbody>
                   </table>
@@ -214,7 +221,7 @@ export default class ModelGenerator
                 <h3 class="mb-2 text-xl">Operations</h3>
                 <div class="px-2 mb-4">
                   ${model.operations
-                    .map((op) => this.getModelOperationMarkup(op))
+                    .map((op) => this.getModelOperationMarkup(op, model.name))
                     .join(`<hr class="my-4">`)}
                 </div>
             </div>
@@ -565,10 +572,9 @@ const ${lowerCase(singular)} = await ${method}({
   }
 
   getData(d: DMMFDocument) {
-    console.dir(this.getModels(d), { depth: Infinity });
-
     return {
       models: this.getModels(d),
     };
   }
 }
+
