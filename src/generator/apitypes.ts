@@ -3,19 +3,18 @@ import { DMMFDocument } from "./transformDMMF";
 import { DMMF } from "@prisma/generator-helper";
 
 type TypesGeneratorStructure = {
-  inputTypes: TGInputType[];
-  // TODO: start generating outputTypes after defining a html theme for them
-  //outputTypes: any;
+  inputTypes: TGType[];
+  outputTypes: TGType[];
   // TODO: evaluate calling them enums as that can be ambigious
   //enums: any;
 };
 
-type TGInputType = {
+type TGType = {
   name: string;
-  fields: TGInputTypeField[];
+  fields: TGTypeField[];
 };
 
-type TGInputTypeField = {
+type TGTypeField = {
   name: string;
   type: string;
   kind: string;
@@ -31,7 +30,7 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
     this.data = this.getData(d);
   }
 
-  getInputTypeFieldHTML(field: TGInputTypeField): string {
+  getTypeFieldHTML(field: TGTypeField): string {
     return `
     <tr>
       <td class="px-4 py-2 border">
@@ -59,11 +58,11 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
     `;
   }
 
-  getInputTypeHTML(inputType: TGInputType): string {
+  getTypeHTML(type: TGType, kind: "inputType" | "outputType"): string {
     return `
       <div>
-        <h3 class="mb-2 text-xl" id="type-inputType-${inputType.name}">${
-      inputType.name
+        <h3 class="mb-2 text-xl" id="type-${kind}-${type.name}">${
+      type.name
     }</h3>
         <table class="table-auto">
           <thead>
@@ -77,9 +76,7 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
             </tr>
           </thead>
           <tbody>
-          ${inputType.fields
-            .map((field) => this.getInputTypeFieldHTML(field))
-            .join("\n")}
+          ${type.fields.map((field) => this.getTypeFieldHTML(field)).join("")}
           </tbody>
         </table>
       </div>
@@ -87,21 +84,31 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
   }
 
   toHTML() {
-    return `<h1 class="text-3xl">Types</h1>
+    return `<div>
+    <h1 class="text-3xl">Types</h1>
         <div>
           <div class="ml-4">
             <h3 class="mb-2 text-2xl font-normal">Input Types</h3>
             <div class="ml-4">
-              ${this.data.inputTypes
-                .map((inputType) => this.getInputTypeHTML(inputType))
+              type${this.data.inputTypes
+                .map((inputType) => this.getTypeHTML(inputType, "inputType"))
+                .join(`<hr class="my-4" />`)}
+            </div>
+          </div>
+          <div class="ml-4">
+            <h3 class="mb-2 text-2xl font-normal">Output Types</h3>
+            <div class="ml-4">
+              ${this.data.outputTypes
+                .map((outputType) => this.getTypeHTML(outputType, "outputType"))
                 .join(`<hr class="my-4" />`)}
             </div>
           </div>
         </div>
+      </div>
 `;
   }
 
-  getInputTypes(dmmfInputType: DMMF.InputType[]): TGInputType[] {
+  getInputTypes(dmmfInputType: DMMF.InputType[]): TGType[] {
     return dmmfInputType.map((inputType) => ({
       name: inputType.name,
       fields: inputType.fields.map((ip) => ({
@@ -115,10 +122,28 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
     }));
   }
 
+  getOutputTypes(dmmfOutputTypes: DMMF.OutputType[]): TGType[] {
+    return dmmfOutputTypes.map((outputType) => ({
+      name: outputType.name,
+      fields: outputType.fields.map((op) => ({
+        kind: op.outputType.kind,
+        name: op.name,
+        nullable: (op.outputType as any).isNullable, // TODO: report this to Tim so that he fix the typings
+        required: op.outputType.isRequired,
+        list: op.outputType.isList,
+        type: op.outputType.type,
+      })),
+    }));
+  }
+
   getData(d: DMMFDocument) {
     return {
       inputTypes: this.getInputTypes(d.schema.inputTypes),
-      //outputTypes: {},
+      outputTypes: this.getOutputTypes(
+        d.schema.outputTypes.filter(
+          (op) => op.name !== "Query" && op.name !== "Mutation"
+        )
+      ),
     };
   }
 }

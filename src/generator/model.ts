@@ -74,7 +74,7 @@ export default class ModelGenerator
         </td>
 
         <td class="px-4 py-2 border"> <ul>
-            ${directive.values.map((val) => `<li>${val}</li>`).join("\n")}
+            ${directive.values.map((val) => `<li>${val}</li>`).join("")}
           </ul>
         </td>
       </tr>
@@ -96,7 +96,7 @@ export default class ModelGenerator
             field.directives.length > 0
               ? field.directives
                   .map((directive) => `<li>${directive}</li>`)
-                  .join("\n")
+                  .join("")
               : "<li> - </li>"
           }
         </ul>
@@ -153,7 +153,7 @@ export default class ModelGenerator
                       </tr>
                       `
                         )
-                        .join("\n")}
+                        .join("")}
                     </tbody>
                   </table>
               </div>
@@ -187,7 +187,7 @@ export default class ModelGenerator
                 <tbody>
                   ${model.directives
                     .map((directive) => this.getModelDiretiveHTML(directive))
-                    .join("\n")}
+                    .join("")}
                 </tbody>
               </table>
                 `
@@ -211,7 +211,7 @@ export default class ModelGenerator
                       .map((field) =>
                         this.getModelFieldTableRow(field, model.name)
                       )
-                      .join("\n")}
+                      .join("")}
                     </tbody>
                   </table>
                 </div>
@@ -334,7 +334,6 @@ export default class ModelGenerator
       const method = `prisma.${lowerCase(model.name)}.${op}`;
       switch (op) {
         case DMMF.ModelAction.create: {
-          console.log(val, mappings[op]);
           ops.push({
             name: op,
             description: `Create one ${singular}`,

@@ -1,5 +1,5 @@
 import { generatorHandler } from "@prisma/generator-helper";
-import TypesGenerator from "./generator/apitypes";
+import HTMLPrinter from "./printer";
 import transformDMMF from "./generator/transformDMMF";
 import * as fs from "fs";
 
@@ -13,7 +13,7 @@ generatorHandler({
   },
   async onGenerate(options) {
     const dmmf = transformDMMF(options.dmmf);
-    const typesgen = new TypesGenerator(dmmf);
-    await fs.promises.writeFile("./test.html", typesgen.toHTML());
+    const html = new HTMLPrinter(dmmf);
+    await fs.promises.writeFile("./test.html", html.toHTML());
   },
 });

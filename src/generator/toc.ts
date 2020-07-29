@@ -55,7 +55,7 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
                         .map((field) =>
                           this.getSubFieldHTML("model", model.name, field)
                         )
-                        .join("\n")}
+                        .join("")}
                       </ul>
                   </div>
                   <div class="mt-2 ml-2">
@@ -65,13 +65,13 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
                       .map((op) =>
                         this.getSubFieldHTML("model", model.name, op)
                       )
-                      .join("\n")}
+                      .join("")}
                     </ul>
                   </div>
             </li>
               `
                 )
-                .join("\n")}
+                .join("")}
             </ul>
           <h5 class="mt-12 mb-2 font-bold">Types</h5>
           <ul class="mb-2 ml-1">
@@ -84,7 +84,7 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
                 .map((inputType) =>
                   this.getSubFieldHTML("type", "inputType", inputType)
                 )
-                .join("\n")}
+                .join("")}
               </ul>
             </li>
             <li class="mb-4">
@@ -96,7 +96,7 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
                 .map((outputType) =>
                   this.getSubFieldHTML("type", "outputType", outputType)
                 )
-                .join("\n")}
+                .join("")}
               </ul>
             </li>
           </ul>
@@ -119,7 +119,9 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
   getTypes(dmmfSchema: DMMF.Schema): TOCTypes {
     return {
       inputTypes: dmmfSchema.inputTypes.map((inputType) => inputType.name),
-      outputTypes: dmmfSchema.outputTypes.map((outputType) => outputType.name),
+      outputTypes: dmmfSchema.outputTypes
+        .map((outputType) => outputType.name)
+        .filter((ot) => ot !== "Query" && ot !== "Mutation"),
       enums: dmmfSchema.enums.map((x) => x.name), // can't use enum as variable as it is reserved word in TS
     };
   }
