@@ -2,3 +2,5 @@ node_modules
 dist
 .env
 dmmf.json
+*.log
+.DS_Store

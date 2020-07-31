@@ -1,0 +1,16 @@
+{
+  "name": "prisma-docs-generator-theme",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "autoprefixer": "^9.8.5",
+    "cssnano": "^4.1.10",
+    "postcss-cli": "^7.1.1",
+    "tailwindcss": "^1.4.6"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production postcss -o dist/main.css ./styles/**/**.css",
+    "watch": "postcss -w -o dist/main.css ./styles/**/**.css"
+  }
+}

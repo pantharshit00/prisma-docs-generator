@@ -6,9 +6,8 @@ import * as fs from "fs";
 generatorHandler({
   onManifest() {
     return {
-      defaultOutput: "./output", // the value here doesn't matter, as it's resolved in https://github.com/prisma/prisma/blob/master/cli/sdk/src/getGenerators.ts
+      defaultOutput: "./output",
       prettyName: "Prisma Docs Generator",
-      //version: clientVersion,
     };
   },
   async onGenerate(options) {
