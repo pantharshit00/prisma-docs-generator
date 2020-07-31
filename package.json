@@ -1,7 +1,7 @@
 {
   "name": "prisma-docs-generator",
-  "version": "1.0.0",
-  "main": "index.js",
+  "version": "0.0.3",
+  "main": "dist/index.js",
   "license": "MIT",
   "bin": {
     "prisma-docs-generator": "dist/cli.js"
@@ -29,6 +29,8 @@
   "scripts": {
     "start": "ts-node main.ts",
     "generate": "prisma generate",
-    "build": "tsc -d & cp -r src/styles dist"
+    "build:gen": "tsc -d && cp -r src/styles dist",
+    "build:styles": "cd theme && yarn build && cp ./dist/main.css ../src/styles",
+    "build": "yarn build:styles && yarn build:gen"
   }
 }

@@ -5,3 +5,5 @@ dmmf.json
 *.log
 .DS_Store
 src/styles/main.css
+prisma/docs
+
