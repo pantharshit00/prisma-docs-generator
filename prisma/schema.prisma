@@ -4,6 +4,7 @@ generator client {
 
 generator docs {
   provider = "node ./dist/index.js"
+  output   = "../docs"
 }
 
 datasource db {
