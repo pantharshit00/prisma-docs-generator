@@ -29,6 +29,7 @@
   "scripts": {
     "start": "ts-node main.ts",
     "generate": "prisma generate",
+    "clean": "rm -rf dist && rm -rf styles/dist",
     "build:gen": "tsc -d && cp -r src/styles dist",
     "build:styles": "cd theme && yarn build && cp ./dist/main.css ../src/styles",
     "build": "yarn build:styles && yarn build:gen"

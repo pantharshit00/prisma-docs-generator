@@ -3,10 +3,8 @@
 import meow from 'meow'
 import kleur from 'kleur'
 import express from 'express'
-import { getSchemaPath, getDMMF, getGenerators } from '@prisma/sdk'
-import { DMMF } from '@prisma/generator-helper'
+import { getSchemaPath, getGenerators } from '@prisma/sdk'
 import { Server } from 'http'
-import fs from 'fs'
 
 const cli = meow(
   `

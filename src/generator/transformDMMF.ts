@@ -14,7 +14,7 @@ export interface DMMFMapping {
   upsert?: string | null;
   delete?: string | null;
   deleteMany?: string | null;
-  aggregate?: string | null;
+  //aggregate?: string | null; // TODO: handle aggregate via a tranform later
 }
 
 export type DMMFDocument = Omit<ExternalDMMF.Document, "mappings"> & {
@@ -52,6 +52,6 @@ export function getMappings(
       deleteMany: mapping.deleteMany,
       updateMany: mapping.updateMany,
       upsert: mapping.upsertOne || mapping.upsertSingle || mapping.upsert,
-      aggregate: mapping.aggregate,
+      //aggregate: mapping.aggregate, // TODO:
     }));
 }
