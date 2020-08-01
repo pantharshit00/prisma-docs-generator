@@ -1,6 +1,6 @@
 ## Prisma Documentation Generator
 
-Automicatlly generate a reference from your Prisma Schema. This package contains a prisma generator so reference will automatically update everytime you will run `prisma generate`
+Automatically generate a reference from your Prisma Schema. This package contains a prisma generator so reference will automatically update everytime you will run `prisma generate`
 
 ![screenshot](https://user-images.githubusercontent.com/22195362/89097596-edeadc00-d3fd-11ea-91ea-86d5d8076da0.png)
 
