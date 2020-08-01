@@ -18,10 +18,10 @@ generatorHandler({
       const styleFile = await fs.promises.readFile(
         path.join(__dirname, "styles", "main.css")
       );
-      fs.promises.mkdir(options.generator.output, {
+      await fs.promises.mkdir(options.generator.output, {
         recursive: true,
       });
-      fs.promises.mkdir(path.join(options.generator.output, "styles"), {
+      await fs.promises.mkdir(path.join(options.generator.output, "styles"), {
         recursive: true,
       });
       await fs.promises.writeFile(
