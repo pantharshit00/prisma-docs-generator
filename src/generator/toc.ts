@@ -41,7 +41,7 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
   toHTML() {
     return `
         <div>
-          <h5 class="mb-2 font-bold">Models</h5>
+          <h5 class="mb-2 font-bold"><a href="#models">Models</a></h5>
           <ul class="mb-2 ml-1">
               ${this.data.models
                 .map(
@@ -49,7 +49,9 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
             <li class="mb-4">
                 ${this.getTOCSubHeaderHTML(model.name)}
                   <div class="mt-1 ml-2">
-                    <div class="mb-1 font-medium text-gray-600">Fields</div>
+                    <div class="mb-1 font-medium text-gray-600"><a href="#model-${
+                      model.name
+                    }-fields">Fields</a></div>
                       <ul class="pl-3 ml-1 border-l-2 border-gray-400">
                       ${model.fields
                         .map((field) =>
@@ -59,7 +61,9 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
                       </ul>
                   </div>
                   <div class="mt-2 ml-2">
-                    <div class="mb-1 font-medium text-gray-600">Operations</div>
+                    <div class="mb-1 font-medium text-gray-600"><a href="#model-${
+                      model.name
+                    }-operations">Operations</a></div>
                     <ul class="pl-3 ml-1 border-l-2 border-gray-400">
                     ${model.operations
                       .map((op) =>
@@ -73,11 +77,11 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
                 )
                 .join("")}
             </ul>
-          <h5 class="mt-12 mb-2 font-bold">Types</h5>
+          <h5 class="mt-12 mb-2 font-bold"><a href="#types">Types</a></h5>
           <ul class="mb-2 ml-1">
             <li class="mb-4">
               <div class="font-semibold text-gray-700">
-                <a href="#types-InputTyoes">Input Types</a>
+                <a href="#input-types">Input Types</a>
               </div>
               <ul class="pl-3 ml-1 border-l-2 border-gray-400">
               ${this.data.types.inputTypes
@@ -89,7 +93,7 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
             </li>
             <li class="mb-4">
               <div class="font-semibold text-gray-700">
-                <a href="#model-User">Output Types</a>
+                <a href="#output-types">Output Types</a>
               </div>
               <ul class="pl-3 ml-1 border-l-2 border-gray-400">
               ${this.data.types.outputTypes

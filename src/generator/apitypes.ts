@@ -1,4 +1,4 @@
-import { Generatable } from "./helpers";
+import { Generatable, isScalarType } from "./helpers";
 import { DMMFDocument } from "./transformDMMF";
 import { DMMF } from "@prisma/generator-helper";
 
@@ -30,14 +30,20 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
     this.data = this.getData(d);
   }
 
-  getTypeFieldHTML(field: TGTypeField): string {
+  getTypeFieldHTML(
+    field: TGTypeField,
+    kind: "inputType" | "outputType"
+  ): string {
     return `
     <tr>
       <td class="px-4 py-2 border">
-        ${field.name}
-      </td>
+        ${field.name} </td>
       <td class="px-4 py-2 border">
-        ${field.type}
+        ${
+          isScalarType(field.type)
+            ? field.type
+            : `<a href="#type-${kind}-${field.type}">${field.type}</a>`
+        }
       </td>
 
       <td class="px-4 py-2 border">
@@ -76,7 +82,9 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
             </tr>
           </thead>
           <tbody>
-          ${type.fields.map((field) => this.getTypeFieldHTML(field)).join("")}
+          ${type.fields
+            .map((field) => this.getTypeFieldHTML(field, kind))
+            .join("")}
           </tbody>
         </table>
       </div>
@@ -85,18 +93,18 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
 
   toHTML() {
     return `<div>
-    <h1 class="text-3xl">Types</h1>
+    <h1 class="text-3xl" id="types">Types</h1>
         <div>
           <div class="ml-4">
-            <h3 class="mb-2 text-2xl font-normal">Input Types</h3>
+            <h3 class="mb-2 text-2xl font-normal" id="input-types">Input Types</h3>
             <div class="ml-4">
-              type${this.data.inputTypes
+              ${this.data.inputTypes
                 .map((inputType) => this.getTypeHTML(inputType, "inputType"))
                 .join(`<hr class="my-4" />`)}
             </div>
           </div>
           <div class="ml-4">
-            <h3 class="mb-2 text-2xl font-normal">Output Types</h3>
+            <h3 class="mb-2 text-2xl font-normal" id="output-types">Output Types</h3>
             <div class="ml-4">
               ${this.data.outputTypes
                 .map((outputType) => this.getTypeHTML(outputType, "outputType"))
