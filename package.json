@@ -1,12 +1,34 @@
 {
   "name": "prisma-docs-generator",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist/index.js",
   "license": "MIT",
   "bin": {
     "prisma-docs-generator": "dist/cli.js"
   },
-  "description": "Documentation Generator for Prisma Schema",
+  "description": "Documentation reference generator for Prisma Schema",
+  "author": {
+    "name": "Harshit Pant",
+    "email": "pantharshit00@gmail.com",
+    "url": "https://harshitpant.com"
+  },
+  "keywords": [
+    "prisma2",
+    "prisma",
+    "prisma-generator",
+    "prisma-schema",
+    "code-generation",
+    "docs",
+    "reference"
+  ],
+  "homepage": "https://github.com/pantharshit00/prisma-docs-generator",
+  "repository": {
+    "url": "git@github.com:pantharshit00/prisma-docs-generator.git"
+  },
+  "bugs": {
+    "email": "pantharshit00@gmail.com",
+    "url": "https://github.com/pantharshit00/prisma-docs-generator/issues"
+  },
   "dependencies": {
     "@prisma/generator-helper": "^2.3.0",
     "@prisma/sdk": "^2.3.0",
@@ -29,9 +51,9 @@
   "scripts": {
     "start": "ts-node main.ts",
     "generate": "prisma generate",
-    "clean": "rm -rf dist && rm -rf styles/dist",
+    "clean": "rm -rf dist && rm -rf styles_generator/dist && rm src/styles/main.css",
     "build:gen": "tsc -d && cp -r src/styles dist",
-    "build:styles": "cd theme && yarn build && cp ./dist/main.css ../src/styles",
+    "build:styles": "cd styles_generator && yarn build && cp ./dist/main.css ../src/styles/",
     "build": "yarn build:styles && yarn build:gen"
   }
 }

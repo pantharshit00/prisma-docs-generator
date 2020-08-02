@@ -81,7 +81,7 @@ export default class ModelGenerator
     return `
       <tr>
         <td class="px-4 py-2 border">
-         ${directive.name} 
+         <strong>${directive.name}</strong>
         </td>
 
         <td class="px-4 py-2 border"> <ul>

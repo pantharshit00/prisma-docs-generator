@@ -4,15 +4,16 @@ Automatically generate a reference from your Prisma Schema. This package contain
 
 ![screenshot](https://user-images.githubusercontent.com/22195362/89097596-edeadc00-d3fd-11ea-91ea-86d5d8076da0.png)
 
-
 ## Getting Started
 
 1. Install this package using:
+
 ```shell
 npm install prisma-docs-generator
 ```
 
 2. Add the generator to the schema
+
 ```prisma
 generator docs {
   provider = "node node_modules/prisma-docs-generator"
@@ -21,7 +22,6 @@ generator docs {
 
 3. Run `npx prisma generate` to trigger the generator. This will create a `docs` folder in `prisma/docs`
 4. Serve the docs using `npx prisma-docs-generator serve`
-
 
 ## Options
 
@@ -38,11 +38,17 @@ generator docs {
 
 ## CLI
 
-// TODO
+This package also ships with a CLI which is used to serve the docs right now. It has the following subcommands:
+
+### `serve`
+
+Serves the static html which the generator generated. It reads the output path from the prisma schema or it will use the default.
+Use `--port` or `-p` to change the port the express server uses.
+
+---
 
 ### License
 
 MIT Harshit Pant
 
-(This is not an official Prisma project. It is personally maintained by Harshit)
-
+(This is not an official Prisma project. It is personally maintained by [https://github.com/pantharshit00](me)

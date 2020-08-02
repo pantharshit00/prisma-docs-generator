@@ -18,21 +18,28 @@ generatorHandler({
       const styleFile = await fs.promises.readFile(
         path.join(__dirname, "styles", "main.css")
       );
-      await fs.promises.mkdir(options.generator.output, {
-        recursive: true,
-      });
-      await fs.promises.mkdir(path.join(options.generator.output, "styles"), {
-        recursive: true,
-      });
-      await fs.promises.writeFile(
-        path.join(options.generator.output, "index.html"),
-        html.toHTML()
-      );
+      try {
+        await fs.promises.mkdir(options.generator.output, {
+          recursive: true,
+        });
+        await fs.promises.mkdir(path.join(options.generator.output, "styles"), {
+          recursive: true,
+        });
+        await fs.promises.writeFile(
+          path.join(options.generator.output, "index.html"),
+          html.toHTML()
+        );
 
-      await fs.promises.writeFile(
-        path.join(options.generator.output, "styles", "main.css"),
-        styleFile
-      );
+        await fs.promises.writeFile(
+          path.join(options.generator.output, "styles", "main.css"),
+          styleFile
+        );
+      } catch (e) {
+        console.error("Error: unable to write files for Prisma Docs Generator");
+        throw e;
+      }
+    } else {
+      throw new Error("No output was specified for Prisma Docs Generator");
     }
   },
 });
