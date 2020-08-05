@@ -57,7 +57,7 @@ export default class HTMLPrinter implements Generatable<DMMFDocument> {
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    ${this.getHead("/styles/main.css")}
+    ${this.getHead("styles/main.css")}
   </head>
   <body class="bg-gray-200">
     <div class="flex min-h-screen">
