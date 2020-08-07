@@ -43,8 +43,11 @@
     "@prisma/cli": "^2.4.1",
     "@prisma/client": "^2.4.1",
     "@types/express": "^4.17.7",
+    "@types/jest": "^26.0.9",
     "@types/node": "^14.0.27",
     "@types/prismjs": "^1.16.1",
+    "jest": "^26.2.2",
+    "ts-jest": "^26.1.4",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
   },
@@ -54,6 +57,7 @@
     "clean": "rm -rf dist && rm -rf styles_generator/dist && rm src/styles/main.css",
     "build:gen": "tsc -d && cp -r src/styles dist",
     "build:styles": "cd styles_generator && yarn build && cp ./dist/main.css ../src/styles/",
-    "build": "yarn build:styles && yarn build:gen"
+    "build": "yarn build:styles && yarn build:gen",
+    "test": "jest"
   }
 }
