@@ -1,4 +1,4 @@
-import { DMMF } from "@prisma/generator-helper";
+import { DMMF } from '@prisma/generator-helper';
 
 export interface Generatable<T> {
   data: T;
@@ -15,12 +15,12 @@ export function lowerCase(name: string): string {
 }
 
 const primitiveTypes = [
-  "String",
-  "Boolean",
-  "Int",
-  "Float",
-  "Json",
-  "DateTime",
+  'String',
+  'Boolean',
+  'Int',
+  'Float',
+  'Json',
+  'DateTime',
 ];
 
 export function isScalarType(type: string): boolean {

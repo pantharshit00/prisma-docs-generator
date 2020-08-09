@@ -47,6 +47,7 @@
     "@types/node": "^14.0.27",
     "@types/prismjs": "^1.16.1",
     "jest": "^26.2.2",
+    "prettier": "^2.0.5",
     "ts-jest": "^26.1.4",
     "ts-node": "^8.10.2",
     "typescript": "^3.9.7"
@@ -58,6 +59,7 @@
     "build:gen": "tsc -d && cp -r src/styles dist",
     "build:styles": "cd styles_generator && yarn build && cp ./dist/main.css ../src/styles/",
     "build": "yarn build:styles && yarn build:gen",
-    "test": "jest"
+    "test": "jest",
+    "format": "prettier --ignore-path .gitignore src/**/*.ts --write"
   }
 }

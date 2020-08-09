@@ -1,6 +1,6 @@
-import { Generatable, isScalarType } from "./helpers";
-import { DMMFDocument } from "./transformDMMF";
-import { DMMF } from "@prisma/generator-helper";
+import { Generatable, isScalarType } from './helpers';
+import { DMMFDocument } from './transformDMMF';
+import { DMMF } from '@prisma/generator-helper';
 
 type TypesGeneratorStructure = {
   inputTypes: TGType[];
@@ -32,7 +32,7 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
 
   getTypeFieldHTML(
     field: TGTypeField,
-    kind: "inputType" | "outputType"
+    kind: 'inputType' | 'outputType'
   ): string {
     return `
     <tr>
@@ -51,20 +51,20 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
       </td>
 
       <td class="px-4 py-2 border">
-        ${field.required ? "<strong>Yes</strong>" : "No"}
+        ${field.required ? '<strong>Yes</strong>' : 'No'}
       </td>
 
       <td class="px-4 py-2 border">
-        ${field.list ? "<strong>Yes</strong>" : "No"}
+        ${field.list ? '<strong>Yes</strong>' : 'No'}
       </td>
       <td class="px-4 py-2 border">
-        ${field.nullable ? "<strong>Yes</strong>" : "No"}
+        ${field.nullable ? '<strong>Yes</strong>' : 'No'}
       </td>
     </tr>
     `;
   }
 
-  getTypeHTML(type: TGType, kind: "inputType" | "outputType"): string {
+  getTypeHTML(type: TGType, kind: 'inputType' | 'outputType'): string {
     return `
       <div>
         <h3 class="mb-2 text-xl" id="type-${kind}-${type.name}">${
@@ -84,7 +84,7 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
           <tbody>
           ${type.fields
             .map((field) => this.getTypeFieldHTML(field, kind))
-            .join("")}
+            .join('')}
           </tbody>
         </table>
       </div>
@@ -99,7 +99,7 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
             <h3 class="mb-2 text-2xl font-normal" id="input-types">Input Types</h3>
             <div class="ml-4">
               ${this.data.inputTypes
-                .map((inputType) => this.getTypeHTML(inputType, "inputType"))
+                .map((inputType) => this.getTypeHTML(inputType, 'inputType'))
                 .join(`<hr class="my-4" />`)}
             </div>
           </div>
@@ -107,7 +107,7 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
             <h3 class="mb-2 text-2xl font-normal" id="output-types">Output Types</h3>
             <div class="ml-4">
               ${this.data.outputTypes
-                .map((outputType) => this.getTypeHTML(outputType, "outputType"))
+                .map((outputType) => this.getTypeHTML(outputType, 'outputType'))
                 .join(`<hr class="my-4" />`)}
             </div>
           </div>
@@ -149,7 +149,7 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
       inputTypes: this.getInputTypes(d.schema.inputTypes),
       outputTypes: this.getOutputTypes(
         d.schema.outputTypes.filter(
-          (op) => op.name !== "Query" && op.name !== "Mutation"
+          (op) => op.name !== 'Query' && op.name !== 'Mutation'
         )
       ),
     };

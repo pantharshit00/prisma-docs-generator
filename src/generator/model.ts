@@ -1,8 +1,8 @@
-import { Generatable, capitalize } from "./helpers";
-import { DMMF } from "@prisma/generator-helper";
-import { DMMFDocument, DMMFMapping } from "./transformDMMF";
-import * as Prism from "prismjs";
-import { lowerCase, isScalarType } from "./helpers";
+import { Generatable, capitalize } from './helpers';
+import { DMMF } from '@prisma/generator-helper';
+import { DMMFDocument, DMMFMapping } from './transformDMMF';
+import * as Prism from 'prismjs';
+import { lowerCase, isScalarType } from './helpers';
 
 type ModelGeneratorStructure = {
   models: MGModel[];
@@ -62,11 +62,11 @@ interface FieldDefault {
 }
 
 let fieldDirectiveMap = new Map<string, string>([
-  ["isUnique", "@unique"],
-  ["isId", "@id"],
-  ["hasDefaultValue", "@default"],
-  ["isUpdatedAt", "@updatedAt"],
-  ["hasDefaultValue", "@default"],
+  ['isUnique', '@unique'],
+  ['isId', '@id'],
+  ['hasDefaultValue', '@default'],
+  ['isUpdatedAt', '@updatedAt'],
+  ['hasDefaultValue', '@default'],
 ]);
 
 export default class ModelGenerator
@@ -85,7 +85,7 @@ export default class ModelGenerator
         </td>
 
         <td class="px-4 py-2 border"> <ul>
-            ${directive.values.map((val) => `<li>${val}</li>`).join("")}
+            ${directive.values.map((val) => `<li>${val}</li>`).join('')}
           </ul>
         </td>
       </tr>
@@ -111,16 +111,16 @@ export default class ModelGenerator
             field.directives.length > 0
               ? field.directives
                   .map((directive) => `<li><strong>${directive}</strong></li>`)
-                  .join("")
-              : "<li> - </li>"
+                  .join('')
+              : '<li> - </li>'
           }
         </ul>
       </td>
       <td class="px-4 py-2 border">
-        ${field.required ? `<b>Yes</b>` : "No"}
+        ${field.required ? `<b>Yes</b>` : 'No'}
       </td>
       <td class="px-4 py-2 border">
-        ${field.documentation ?? "-"}
+        ${field.documentation ?? '-'}
       </td>
     </tr>
     `;
@@ -168,12 +168,12 @@ export default class ModelGenerator
                         }
                         </td>
                         <td class="px-4 py-2 border">
-                         ${opK.required ? "<b>Yes</b>" : "No"} 
+                         ${opK.required ? '<b>Yes</b>' : 'No'} 
                         </td>
                       </tr>
                       `
                         )
-                        .join("")}
+                        .join('')}
                     </tbody>
                   </table>
                   <h4 class="text-lg mb-2">Output</h4>
@@ -202,7 +202,7 @@ export default class ModelGenerator
               ${
                 model.documentation
                   ? `<div class="mb-2">Description: ${model.documentation}</div>`
-                  : ""
+                  : ''
               }
               ${
                 model.directives.length > 0
@@ -217,11 +217,11 @@ export default class ModelGenerator
                 <tbody>
                   ${model.directives
                     .map((directive) => this.getModelDiretiveHTML(directive))
-                    .join("")}
+                    .join('')}
                 </tbody>
               </table>
                 `
-                  : ""
+                  : ''
               }
               <div class="px-4 mt-4">
                 <h3 class="mb-2 text-xl" id="model-${
@@ -243,7 +243,7 @@ export default class ModelGenerator
                       .map((field) =>
                         this.getModelFieldTableRow(field, model.name)
                       )
-                      .join("")}
+                      .join('')}
                     </tbody>
                   </table>
                 </div>
@@ -271,13 +271,13 @@ export default class ModelGenerator
     let directiveValue: MGModelDirective[] = [];
 
     if (model.idFields.length > 0) {
-      directiveValue.push({ name: "@@id", values: model.idFields });
+      directiveValue.push({ name: '@@id', values: model.idFields });
     }
 
     if (model.uniqueFields.length > 0) {
       model.uniqueFields.forEach((uniqueField) => {
         directiveValue.push({
-          name: "@@unique",
+          name: '@@unique',
           values: uniqueField,
         });
       });
@@ -285,7 +285,7 @@ export default class ModelGenerator
 
     if (model.uniqueIndexes.length > 0) {
       model.uniqueIndexes.forEach((uniqueIndex) => {
-        directiveValue.push({ name: "@@index", values: uniqueIndex.fields });
+        directiveValue.push({ name: '@@index', values: uniqueIndex.fields });
       });
     }
     return directiveValue;
@@ -307,10 +307,10 @@ export default class ModelGenerator
   getFieldType(field: DMMF.Field): string {
     let name = field.type;
     if (!field.isRequired && !field.isList) {
-      name += "?";
+      name += '?';
     }
     if (field.isList) {
-      name += "[]";
+      name += '[]';
     }
     return name;
   }
@@ -326,20 +326,20 @@ export default class ModelGenerator
       const mappedDirectiveValue = fieldDirectiveMap.get(k);
       if (mappedDirectiveValue) {
         // default needs separate treatment right now as it can be a fn or any other type really
-        if (k === "hasDefaultValue" && field.default !== undefined) {
+        if (k === 'hasDefaultValue' && field.default !== undefined) {
           if (
-            typeof field.default === "string" ||
-            typeof field.default === "number" ||
-            typeof field.default === "boolean"
+            typeof field.default === 'string' ||
+            typeof field.default === 'number' ||
+            typeof field.default === 'boolean'
           ) {
             directives.push(`${mappedDirectiveValue}(${field.default})`);
           }
-          if (typeof field.default === "object") {
+          if (typeof field.default === 'object') {
             // Output of this template is, for example, @default(now())
             directives.push(
               `${mappedDirectiveValue}(${
                 (field.default as FieldDefault).name
-              }(${(field.default as FieldDefault).args.join(",")}))`
+              }(${(field.default as FieldDefault).args.join(',')}))`
             );
           }
         } else {
@@ -360,7 +360,7 @@ export default class ModelGenerator
       throw new Error(`No operation mapping found for model: ${model.name}`);
     }
     const modelOps = Object.entries(mappings).filter(
-      ([map, _val]) => map !== "model"
+      ([map, _val]) => map !== 'model'
     );
     let ops: MGModelOperation[] = [];
     modelOps.forEach(([op, val]) => {
@@ -370,7 +370,7 @@ export default class ModelGenerator
       switch (op) {
         case DMMF.ModelAction.create: {
           const field = schema.outputTypes
-            .find((t) => t.name === "Mutation")
+            .find((t) => t.name === 'Mutation')
             ?.fields.find((f) => f.name === val);
           ops.push({
             name: op,
@@ -384,7 +384,7 @@ const ${singular} = await ${method}({
 })
 `,
               Prism.languages.javascript,
-              "javascript"
+              'javascript'
             ),
             opKeys: field?.args.map((a) => ({
               name: a.name,
@@ -402,7 +402,7 @@ const ${singular} = await ${method}({
         }
         case DMMF.ModelAction.deleteMany: {
           const field = schema.outputTypes
-            .find((t) => t.name === "Mutation")
+            .find((t) => t.name === 'Mutation')
             ?.fields.find((f) => f.name === val);
           ops.push({
             name: op,
@@ -416,7 +416,7 @@ const { count } = await ${method}({
 })
 `,
               Prism.languages.javascript,
-              "javascript"
+              'javascript'
             ),
             opKeys: field?.args.map((a) => ({
               name: a.name,
@@ -434,7 +434,7 @@ const { count } = await ${method}({
         }
         case DMMF.ModelAction.delete: {
           const field = schema.outputTypes
-            .find((t) => t.name === "Mutation")
+            .find((t) => t.name === 'Mutation')
             ?.fields.find((f) => f.name === val);
           ops.push({
             name: op,
@@ -447,7 +447,7 @@ const ${singular} = await ${method}({
   }
 })`,
               Prism.languages.javascript,
-              "javascript"
+              'javascript'
             ),
             opKeys: field?.args.map((a) => ({
               name: a.name,
@@ -465,7 +465,7 @@ const ${singular} = await ${method}({
         }
         case DMMF.ModelAction.findMany: {
           const field = schema.outputTypes
-            .find((t) => t.name === "Query")
+            .find((t) => t.name === 'Query')
             ?.fields.find((f) => f.name === val);
           ops.push({
             name: op,
@@ -477,7 +477,7 @@ const ${plural} = await ${method}()
 const ${plural} = await ${method}({ take: 10 })
 `,
               Prism.languages.javascript,
-              "javascript"
+              'javascript'
             ),
             opKeys: field?.args.map((a) => ({
               name: a.name,
@@ -495,7 +495,7 @@ const ${plural} = await ${method}({ take: 10 })
         }
         case DMMF.ModelAction.findOne: {
           const field = schema.outputTypes
-            .find((t) => t.name === "Query")
+            .find((t) => t.name === 'Query')
             ?.fields.find((f) => f.name === val);
           ops.push({
             name: op,
@@ -509,7 +509,7 @@ const ${lowerCase(singular)} = await ${method}({
 })
 `,
               Prism.languages.javascript,
-              "javascript"
+              'javascript'
             ),
             opKeys: field?.args.map((a) => ({
               name: a.name,
@@ -528,7 +528,7 @@ const ${lowerCase(singular)} = await ${method}({
 
         case DMMF.ModelAction.update: {
           const field = schema.outputTypes
-            .find((t) => t.name === "Mutation")
+            .find((t) => t.name === 'Mutation')
             ?.fields.find((f) => f.name === val);
           ops.push({
             name: op,
@@ -545,7 +545,7 @@ const ${lowerCase(singular)} = await ${method}({
 })
 `,
               Prism.languages.javascript,
-              "javascript"
+              'javascript'
             ),
             opKeys: field?.args.map((a) => ({
               name: a.name,
@@ -564,7 +564,7 @@ const ${lowerCase(singular)} = await ${method}({
 
         case DMMF.ModelAction.updateMany: {
           const field = schema.outputTypes
-            .find((t) => t.name === "Mutation")
+            .find((t) => t.name === 'Mutation')
             ?.fields.find((f) => f.name === val);
           ops.push({
             name: op,
@@ -579,7 +579,7 @@ const ${lowerCase(singular)} = await ${method}({
   }
 })`,
               Prism.languages.javascript,
-              "javascript"
+              'javascript'
             ),
             opKeys: field?.args.map((a) => ({
               name: a.name,
@@ -597,7 +597,7 @@ const ${lowerCase(singular)} = await ${method}({
         }
         case DMMF.ModelAction.upsert: {
           const field = schema.outputTypes
-            .find((t) => t.name === "Mutation")
+            .find((t) => t.name === 'Mutation')
             ?.fields.find((f) => f.name === val);
           ops.push({
             name: op,
@@ -616,7 +616,7 @@ const ${lowerCase(singular)} = await ${method}({
   }
 })`,
               Prism.languages.javascript,
-              "javascript"
+              'javascript'
             ),
             opKeys: field?.args.map((a) => ({
               name: a.name,

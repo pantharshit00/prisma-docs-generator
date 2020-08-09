@@ -1,6 +1,6 @@
-import { Generatable } from "./helpers";
-import { DMMF } from "@prisma/generator-helper";
-import { DMMFDocument, DMMFMapping } from "./transformDMMF";
+import { Generatable } from './helpers';
+import { DMMF } from '@prisma/generator-helper';
+import { DMMFDocument, DMMFMapping } from './transformDMMF';
 
 type TOCStructure = {
   models: TOCModel[];
@@ -55,9 +55,9 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
                       <ul class="pl-3 ml-1 border-l-2 border-gray-400">
                       ${model.fields
                         .map((field) =>
-                          this.getSubFieldHTML("model", model.name, field)
+                          this.getSubFieldHTML('model', model.name, field)
                         )
-                        .join("")}
+                        .join('')}
                       </ul>
                   </div>
                   <div class="mt-2 ml-2">
@@ -67,15 +67,15 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
                     <ul class="pl-3 ml-1 border-l-2 border-gray-400">
                     ${model.operations
                       .map((op) =>
-                        this.getSubFieldHTML("model", model.name, op)
+                        this.getSubFieldHTML('model', model.name, op)
                       )
-                      .join("")}
+                      .join('')}
                     </ul>
                   </div>
             </li>
               `
                 )
-                .join("")}
+                .join('')}
             </ul>
           <h5 class="mt-12 mb-2 font-bold"><a href="#types">Types</a></h5>
           <ul class="mb-2 ml-1">
@@ -86,9 +86,9 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
               <ul class="pl-3 ml-1 border-l-2 border-gray-400">
               ${this.data.types.inputTypes
                 .map((inputType) =>
-                  this.getSubFieldHTML("type", "inputType", inputType)
+                  this.getSubFieldHTML('type', 'inputType', inputType)
                 )
-                .join("")}
+                .join('')}
               </ul>
             </li>
             <li class="mb-4">
@@ -98,9 +98,9 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
               <ul class="pl-3 ml-1 border-l-2 border-gray-400">
               ${this.data.types.outputTypes
                 .map((outputType) =>
-                  this.getSubFieldHTML("type", "outputType", outputType)
+                  this.getSubFieldHTML('type', 'outputType', outputType)
                 )
-                .join("")}
+                .join('')}
               </ul>
             </li>
           </ul>
@@ -115,7 +115,7 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
         fields: model.fields.map((field) => field.name),
         operations: Object.keys(
           mappings.find((x) => x.model === model.name) ?? {}
-        ).filter((op) => op !== "model"),
+        ).filter((op) => op !== 'model'),
       };
     });
   }
@@ -125,7 +125,7 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
       inputTypes: dmmfSchema.inputTypes.map((inputType) => inputType.name),
       outputTypes: dmmfSchema.outputTypes
         .map((outputType) => outputType.name)
-        .filter((ot) => ot !== "Query" && ot !== "Mutation"),
+        .filter((ot) => ot !== 'Query' && ot !== 'Mutation'),
       enums: dmmfSchema.enums.map((x) => x.name), // can't use enum as variable as it is reserved word in TS
     };
   }

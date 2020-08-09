@@ -1,9 +1,9 @@
 // TODO: separate out printers from transformers
-import { Generatable } from "../generator/helpers";
-import TOCGenerator from "../generator/toc";
-import ModelGenerator from "../generator/model";
-import TypesGenerator from "../generator/apitypes";
-import { DMMFDocument } from "../generator/transformDMMF";
+import { Generatable } from '../generator/helpers';
+import TOCGenerator from '../generator/toc';
+import ModelGenerator from '../generator/model';
+import TypesGenerator from '../generator/apitypes';
+import { DMMFDocument } from '../generator/transformDMMF';
 
 export default class HTMLPrinter implements Generatable<DMMFDocument> {
   data: DMMFDocument;
@@ -57,7 +57,7 @@ export default class HTMLPrinter implements Generatable<DMMFDocument> {
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    ${this.getHead("styles/main.css")}
+    ${this.getHead('styles/main.css')}
   </head>
   <body class="bg-gray-200">
     <div class="flex min-h-screen">

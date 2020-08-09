@@ -1,14 +1,14 @@
-import { generatorHandler } from "@prisma/generator-helper";
-import HTMLPrinter from "./printer";
-import transformDMMF from "./generator/transformDMMF";
-import * as fs from "fs";
-import * as path from "path";
+import { generatorHandler } from '@prisma/generator-helper';
+import HTMLPrinter from './printer';
+import transformDMMF from './generator/transformDMMF';
+import * as fs from 'fs';
+import * as path from 'path';
 
 generatorHandler({
   onManifest() {
     return {
-      defaultOutput: "./docs",
-      prettyName: "Prisma Docs Generator",
+      defaultOutput: './docs',
+      prettyName: 'Prisma Docs Generator',
     };
   },
   async onGenerate(options) {
@@ -16,30 +16,30 @@ generatorHandler({
     const html = new HTMLPrinter(dmmf);
     if (options.generator.output) {
       const styleFile = await fs.promises.readFile(
-        path.join(__dirname, "styles", "main.css")
+        path.join(__dirname, 'styles', 'main.css')
       );
       try {
         await fs.promises.mkdir(options.generator.output, {
           recursive: true,
         });
-        await fs.promises.mkdir(path.join(options.generator.output, "styles"), {
+        await fs.promises.mkdir(path.join(options.generator.output, 'styles'), {
           recursive: true,
         });
         await fs.promises.writeFile(
-          path.join(options.generator.output, "index.html"),
+          path.join(options.generator.output, 'index.html'),
           html.toHTML()
         );
 
         await fs.promises.writeFile(
-          path.join(options.generator.output, "styles", "main.css"),
+          path.join(options.generator.output, 'styles', 'main.css'),
           styleFile
         );
       } catch (e) {
-        console.error("Error: unable to write files for Prisma Docs Generator");
+        console.error('Error: unable to write files for Prisma Docs Generator');
         throw e;
       }
     } else {
-      throw new Error("No output was specified for Prisma Docs Generator");
+      throw new Error('No output was specified for Prisma Docs Generator');
     }
   },
 });
