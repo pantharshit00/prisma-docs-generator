@@ -1,0 +1,111 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`model generator renders model directive html correctly 1`] = `
+"
+      <tr>
+        <td class=\\"px-4 py-2 border\\">
+         <strong>@@id</strong>
+        </td>
+
+        <td class=\\"px-4 py-2 border\\"> <ul>
+            <li>name</li><li>id</li>
+          </ul>
+        </td>
+      </tr>
+    "
+`;
+
+exports[`model generator renders model field table row correctly 1`] = `
+"
+    <tr id=\\"model-Post-title\\">
+      <td class=\\"px-4 py-2 border\\">
+       title 
+      </td>
+      <td class=\\"px-4 py-2 border\\">
+       String?
+      </td>
+      <td class=\\"px-4 py-2 border\\">
+        <ul>
+          <li> - </li>
+        </ul>
+      </td>
+      <td class=\\"px-4 py-2 border\\">
+        No
+      </td>
+      <td class=\\"px-4 py-2 border\\">
+        -
+      </td>
+    </tr>
+    "
+`;
+
+exports[`model generator renders model field table row correctly 2`] = `
+"
+    <tr id=\\"model-User-email\\">
+      <td class=\\"px-4 py-2 border\\">
+       email 
+      </td>
+      <td class=\\"px-4 py-2 border\\">
+       String
+      </td>
+      <td class=\\"px-4 py-2 border\\">
+        <ul>
+          <li> - </li>
+        </ul>
+      </td>
+      <td class=\\"px-4 py-2 border\\">
+        <b>Yes</b>
+      </td>
+      <td class=\\"px-4 py-2 border\\">
+        This is some docs
+      </td>
+    </tr>
+    "
+`;
+
+exports[`model generator renders model operation html correctly 1`] = `
+"
+                <div class=\\"mt-4\\">
+                  <h4 id=\\"model-User-findOne\\" class=\\"mb-2 text-lg font-bold\\">findOne</h4>
+                  <p>Find zero or one user</p>
+                  <div class=\\"mb-2\\">
+                    <pre
+                      class=\\"language-markup\\"
+                    ><code class=\\" language-javascript\\">Example usage</code></pre>
+                  </div>
+                  <h4 class=\\"text-lg mb-2\\">Input</h4>
+                  <table class=\\"table-auto mb-2\\">
+                    <thead>
+                      <tr>
+                        <th class=\\"px-4 py-2 border\\">Name</th>
+                        <th class=\\"px-4 py-2 border\\">Type</th>
+                        <th class=\\"px-4 py-2 border\\">Required</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      
+                      <tr>
+                        <td class=\\"px-4 py-2 border\\">
+                          where
+                        </td>
+                        <td class=\\"px-4 py-2 border\\">
+                        <a href=\\"#type-inputType-UserWhereInput\\">UserWhereInput</a>
+                        </td>
+                        <td class=\\"px-4 py-2 border\\">
+                         No 
+                        </td>
+                      </tr>
+                      
+                    </tbody>
+                  </table>
+                  <h4 class=\\"text-lg mb-2\\">Output</h4>
+                  <div><strong>Type: </strong> <a href=\\"#type-outputType-User\\">User</a></div>
+                  <div><strong>Kind: </strong>
+                  object</div>
+                  <div><strong>Required: </strong>
+                  Yes</div>
+                  <div><strong>List: </strong>
+                  No</div>
+              </div>
+    "
+`;
