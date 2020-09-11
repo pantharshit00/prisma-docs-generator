@@ -31,6 +31,7 @@ const cli = meow(
     },
   }
 );
+
 class ExpressService {
   exp: express.Express;
   appInstance: Server | null;
