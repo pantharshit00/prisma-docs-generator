@@ -16,10 +16,9 @@ type TGType = {
 
 type TGTypeField = {
   name: string;
-  type: string;
+  type: DMMF.SchemaArgInputType[];
   kind: string;
   required: boolean;
-  list: boolean;
   nullable: boolean;
 };
 
@@ -39,11 +38,15 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
       <td class="px-4 py-2 border">
         ${field.name} </td>
       <td class="px-4 py-2 border">
-        ${
-          isScalarType(field.type)
-            ? field.type
-            : `<a href="#type-${kind}-${field.type}">${field.type}</a>`
-        }
+        ${field.type
+          .map((f) =>
+            isScalarType(f.type as string)
+              ? f.type
+              : `<a href="#type-${kind}-${f.type}">${f.type}${
+                  f.isList ? '[]' : ''
+                }</a>`
+          )
+          .join(' | ')}
       </td>
 
       <td class="px-4 py-2 border">
@@ -54,9 +57,6 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
         ${field.required ? '<strong>Yes</strong>' : 'No'}
       </td>
 
-      <td class="px-4 py-2 border">
-        ${field.list ? '<strong>Yes</strong>' : 'No'}
-      </td>
       <td class="px-4 py-2 border">
         ${field.nullable ? '<strong>Yes</strong>' : 'No'}
       </td>
@@ -77,7 +77,6 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
               <th class="px-4 py-2 border">Type</th>
               <th class="px-4 py-2 border">Kind</th>
               <th class="px-4 py-2 border">Required</th>
-              <th class="px-4 py-2 border">List</th>
               <th class="px-4 py-2 border">Nullable</th>
             </tr>
           </thead>
@@ -120,12 +119,11 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
     return dmmfInputType.map((inputType) => ({
       name: inputType.name,
       fields: inputType.fields.map((ip) => ({
-        kind: ip.inputType.kind,
+        kind: ip.inputTypes.length > 1 ? 'union' : ip.inputTypes[0].kind,
         name: ip.name,
-        nullable: ip.inputType.isNullable,
-        required: ip.inputType.isRequired,
-        list: ip.inputType.isList,
-        type: ip.inputType.type,
+        nullable: ip.isNullable,
+        required: ip.isRequired,
+        type: ip.inputTypes,
       })),
     }));
   }
@@ -136,10 +134,16 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
       fields: outputType.fields.map((op) => ({
         kind: op.outputType.kind,
         name: op.name,
-        nullable: (op.outputType as any).isNullable, // TODO: report this to Tim so that he fix the typings
-        required: op.outputType.isRequired,
-        list: op.outputType.isList,
-        type: op.outputType.type,
+        nullable: Boolean(op.isNullable),
+        required: op.isRequired,
+        list: (op.outputType as any).isList,
+        type: [
+          {
+            isList: op.outputType.isList,
+            kind: op.outputType.kind,
+            type: op.outputType.type as string,
+          },
+        ],
       })),
     }));
   }

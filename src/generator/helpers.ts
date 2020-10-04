@@ -21,6 +21,7 @@ const primitiveTypes = [
   'Float',
   'Json',
   'DateTime',
+  'Null',
 ];
 
 export function isScalarType(type: string): boolean {

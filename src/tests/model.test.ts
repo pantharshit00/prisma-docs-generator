@@ -163,7 +163,15 @@ describe('model generator', () => {
           name: 'findOne',
           description: 'Find zero or one user',
           usage: 'Example usage',
-          opKeys: [{ name: 'where', required: false, type: 'UserWhereInput' }],
+          opKeys: [
+            {
+              name: 'where',
+              required: false,
+              types: [
+                { type: 'UserWhereInput', isList: false, kind: 'object' },
+              ],
+            },
+          ],
           output: { type: 'User', required: true, kind: 'object', list: false },
         },
         'User'

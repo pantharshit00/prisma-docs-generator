@@ -32,7 +32,7 @@ type MGModelField = {
 
 type MGModelOperationKeys = {
   name: string;
-  type: string;
+  types: DMMF.SchemaArgInputType[];
   required: boolean;
 };
 
@@ -161,11 +161,15 @@ export default class ModelGenerator
                           ${opK.name}
                         </td>
                         <td class="px-4 py-2 border">
-                        ${
-                          isScalarType(opK.type)
-                            ? opK.type
-                            : `<a href="#type-inputType-${opK.type}">${opK.type}</a>`
-                        }
+                        ${opK.types
+                          .map((t) =>
+                            isScalarType(t.type as string)
+                              ? t.type
+                              : `<a href="#type-inputType-${t.type}">${t.type}${
+                                  t.isList ? '[]' : ''
+                                }</a>`
+                          )
+                          .join(' | ')}
                         </td>
                         <td class="px-4 py-2 border">
                          ${opK.required ? '<b>Yes</b>' : 'No'} 
@@ -388,13 +392,13 @@ const ${singular} = await ${method}({
             ),
             opKeys: field?.args.map((a) => ({
               name: a.name,
-              type: a.inputType.type,
-              required: a.inputType.isRequired,
+              types: a.inputTypes,
+              required: a.isRequired,
             })),
             output: {
-              type: field?.outputType.type,
+              type: field?.outputType.type as string,
               kind: field?.outputType.kind,
-              required: field?.outputType.isRequired,
+              required: field?.isRequired,
               list: field?.outputType.isList,
             },
           });
@@ -420,13 +424,13 @@ const { count } = await ${method}({
             ),
             opKeys: field?.args.map((a) => ({
               name: a.name,
-              type: a.inputType.type,
-              required: a.inputType.isRequired,
+              types: a.inputTypes,
+              required: a.isRequired,
             })),
             output: {
-              type: field?.outputType.type,
+              type: field?.outputType.type as string,
               kind: field?.outputType.kind,
-              required: field?.outputType.isRequired,
+              required: field?.isRequired,
               list: field?.outputType.isList,
             },
           });
@@ -451,13 +455,13 @@ const ${singular} = await ${method}({
             ),
             opKeys: field?.args.map((a) => ({
               name: a.name,
-              type: a.inputType.type,
-              required: a.inputType.isRequired,
+              types: a.inputTypes,
+              required: a.isRequired,
             })),
             output: {
-              type: field?.outputType.type,
+              type: field?.outputType.type as string,
               kind: field?.outputType.kind,
-              required: field?.outputType.isRequired,
+              required: field?.isRequired,
               list: field?.outputType.isList,
             },
           });
@@ -481,13 +485,13 @@ const ${plural} = await ${method}({ take: 10 })
             ),
             opKeys: field?.args.map((a) => ({
               name: a.name,
-              type: a.inputType.type,
-              required: a.inputType.isRequired,
+              types: a.inputTypes,
+              required: a.isRequired,
             })),
             output: {
-              type: field?.outputType.type,
+              type: field?.outputType.type as string,
               kind: field?.outputType.kind,
-              required: field?.outputType.isRequired,
+              required: field?.isRequired,
               list: field?.outputType.isList,
             },
           });
@@ -513,13 +517,13 @@ const ${lowerCase(singular)} = await ${method}({
             ),
             opKeys: field?.args.map((a) => ({
               name: a.name,
-              type: a.inputType.type,
-              required: a.inputType.isRequired,
+              types: a.inputTypes,
+              required: a.isRequired,
             })),
             output: {
-              type: field?.outputType.type,
+              type: field?.outputType.type as string,
               kind: field?.outputType.kind,
-              required: field?.outputType.isRequired,
+              required: field?.isRequired,
               list: field?.outputType.isList,
             },
           });
@@ -549,13 +553,13 @@ const ${lowerCase(singular)} = await ${method}({
             ),
             opKeys: field?.args.map((a) => ({
               name: a.name,
-              type: a.inputType.type,
-              required: a.inputType.isRequired,
+              types: a.inputTypes,
+              required: a.isRequired,
             })),
             output: {
-              type: field?.outputType.type,
+              type: field?.outputType.type as string,
               kind: field?.outputType.kind,
-              required: field?.outputType.isRequired,
+              required: field?.isRequired,
               list: field?.outputType.isList,
             },
           });
@@ -583,13 +587,13 @@ const ${lowerCase(singular)} = await ${method}({
             ),
             opKeys: field?.args.map((a) => ({
               name: a.name,
-              type: a.inputType.type,
-              required: a.inputType.isRequired,
+              types: a.inputTypes,
+              required: a.isRequired,
             })),
             output: {
-              type: field?.outputType.type,
+              type: field?.outputType.type as string,
               kind: field?.outputType.kind,
-              required: field?.outputType.isRequired,
+              required: field?.isRequired,
               list: field?.outputType.isList,
             },
           });
@@ -620,13 +624,13 @@ const ${lowerCase(singular)} = await ${method}({
             ),
             opKeys: field?.args.map((a) => ({
               name: a.name,
-              type: a.inputType.type,
-              required: a.inputType.isRequired,
+              types: a.inputTypes,
+              required: a.isRequired,
             })),
             output: {
-              type: field?.outputType.type,
+              type: field?.outputType.type as string,
               kind: field?.outputType.kind,
-              required: field?.outputType.isRequired,
+              required: field?.isRequired,
               list: field?.outputType.isList,
             },
           });
