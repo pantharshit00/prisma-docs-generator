@@ -3,6 +3,7 @@
     "target": "es2019",
     "baseUrl": "src",
     "outDir": "dist",
+    "sourceMap": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "lib": ["es2019", "dom"], // dom is added for prismjs :(
