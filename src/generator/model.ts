@@ -1,6 +1,6 @@
 import { Generatable, capitalize } from './helpers';
 import { DMMF } from '@prisma/generator-helper';
-import { DMMFDocument, DMMFMapping } from './transformDMMF';
+import { DMMFDocument } from './transformDMMF';
 import * as Prism from 'prismjs';
 import { lowerCase, isScalarType } from './helpers';
 
@@ -357,7 +357,7 @@ export default class ModelGenerator
 
   getModelOperations(
     model: DMMF.Model,
-    mappings: DMMFMapping | undefined,
+    mappings: DMMF.Mappings | undefined,
     schema: DMMF.Schema
   ): MGModelOperation[] {
     if (!mappings) {
@@ -648,11 +648,7 @@ const ${lowerCase(singular)} = await ${method}({
         documentation: (model as any).documentation as string, // TODO: Open issue for generator helper
         directives: this.getModelDirective(model),
         fields: this.getModelFields(model),
-        operations: this.getModelOperations(
-          model,
-          dmmf.mappings.find((map) => map.model === model.name),
-          dmmf.schema
-        ),
+        operations: this.getModelOperations(model, dmmf.mappings, dmmf.schema),
       };
     });
   }

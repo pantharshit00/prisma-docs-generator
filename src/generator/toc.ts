@@ -1,6 +1,6 @@
 import { Generatable } from './helpers';
 import { DMMF } from '@prisma/generator-helper';
-import { DMMFDocument, DMMFMapping } from './transformDMMF';
+import { DMMFDocument } from './transformDMMF';
 
 type TOCStructure = {
   models: TOCModel[];
@@ -108,13 +108,13 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
     `;
   }
 
-  getModels(dmmfModel: DMMF.Model[], mappings: DMMFMapping[]): TOCModel[] {
+  getModels(dmmfModel: DMMF.Model[], mappings: DMMF.Mappings): TOCModel[] {
     return dmmfModel.map((model) => {
       return {
         name: model.name,
         fields: model.fields.map((field) => field.name),
         operations: Object.keys(
-          mappings.find((x) => x.model === model.name) ?? {}
+          mappings.modelOperations.find((x) => x.model === model.name) ?? {}
         ).filter((op) => op !== 'model'),
       };
     });
