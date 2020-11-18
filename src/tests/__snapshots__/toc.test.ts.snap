@@ -31,7 +31,7 @@ exports[`TOC renders on toHTML 1`] = `
                   <div class=\\"mt-2 ml-2\\">
                     <div class=\\"mb-1 font-medium text-gray-600\\"><a href=\\"#model-Post-operations\\">Operations</a></div>
                     <ul class=\\"pl-3 ml-1 border-l-2 border-gray-400\\">
-                    <li><a href=\\"#model-Post-findOne\\">findOne</a></li><li><a href=\\"#model-Post-findMany\\">findMany</a></li><li><a href=\\"#model-Post-create\\">create</a></li><li><a href=\\"#model-Post-delete\\">delete</a></li><li><a href=\\"#model-Post-update\\">update</a></li><li><a href=\\"#model-Post-deleteMany\\">deleteMany</a></li><li><a href=\\"#model-Post-updateMany\\">updateMany</a></li><li><a href=\\"#model-Post-upsert\\">upsert</a></li>
+                    <li><a href=\\"#model-Post-findUnique\\">findUnique</a></li><li><a href=\\"#model-Post-findFirst\\">findFirst</a></li><li><a href=\\"#model-Post-findMany\\">findMany</a></li><li><a href=\\"#model-Post-create\\">create</a></li><li><a href=\\"#model-Post-delete\\">delete</a></li><li><a href=\\"#model-Post-update\\">update</a></li><li><a href=\\"#model-Post-deleteMany\\">deleteMany</a></li><li><a href=\\"#model-Post-updateMany\\">updateMany</a></li><li><a href=\\"#model-Post-upsert\\">upsert</a></li>
                     </ul>
                   </div>
             </li>
@@ -51,7 +51,7 @@ exports[`TOC renders on toHTML 1`] = `
                   <div class=\\"mt-2 ml-2\\">
                     <div class=\\"mb-1 font-medium text-gray-600\\"><a href=\\"#model-User-operations\\">Operations</a></div>
                     <ul class=\\"pl-3 ml-1 border-l-2 border-gray-400\\">
-                    <li><a href=\\"#model-User-findOne\\">findOne</a></li><li><a href=\\"#model-User-findMany\\">findMany</a></li><li><a href=\\"#model-User-create\\">create</a></li><li><a href=\\"#model-User-delete\\">delete</a></li><li><a href=\\"#model-User-update\\">update</a></li><li><a href=\\"#model-User-deleteMany\\">deleteMany</a></li><li><a href=\\"#model-User-updateMany\\">updateMany</a></li><li><a href=\\"#model-User-upsert\\">upsert</a></li>
+                    <li><a href=\\"#model-User-findUnique\\">findUnique</a></li><li><a href=\\"#model-User-findFirst\\">findFirst</a></li><li><a href=\\"#model-User-findMany\\">findMany</a></li><li><a href=\\"#model-User-create\\">create</a></li><li><a href=\\"#model-User-delete\\">delete</a></li><li><a href=\\"#model-User-update\\">update</a></li><li><a href=\\"#model-User-deleteMany\\">deleteMany</a></li><li><a href=\\"#model-User-updateMany\\">updateMany</a></li><li><a href=\\"#model-User-upsert\\">upsert</a></li>
                     </ul>
                   </div>
             </li>
