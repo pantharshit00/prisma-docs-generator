@@ -1,9 +1,9 @@
-import { DMMF } from '@prisma/generator-helper';
+import { DMMFDocument } from './transformDMMF';
 
 export interface Generatable<T> {
   data: T;
   toHTML(): string;
-  getData(d: DMMF.Document): T;
+  getData(d: DMMFDocument): T;
 }
 
 export function capitalize(str: string): string {

@@ -41,7 +41,7 @@ describe('TOC', () => {
     expect(spy).toHaveBeenCalledWith('model', 'Post', 'name');
     expect(spy).toHaveBeenCalledWith('model', 'User', 'userId');
     expect(spy).toHaveBeenCalledWith('model', 'User', 'something');
-    expect(spy).toHaveBeenCalledWith('model', 'User', 'findOne');
+    expect(spy).toHaveBeenCalledWith('model', 'User', 'findUnique');
     expect(spy).toHaveBeenCalledWith('type', 'inputType', 'UserWhereInput');
     expect(spy).toHaveBeenCalledWith('type', 'outputType', 'User');
 

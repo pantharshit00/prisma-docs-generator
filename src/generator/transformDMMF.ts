@@ -7,6 +7,7 @@ export function lowerCase(name: string): string {
 export interface DMMFMapping {
   model: string;
   findOne?: string | null;
+  findFirst?: string | null;
   findMany?: string | null;
   create?: string | null;
   update?: string | null;
@@ -14,7 +15,6 @@ export interface DMMFMapping {
   upsert?: string | null;
   delete?: string | null;
   deleteMany?: string | null;
-  //aggregate?: string | null; // TODO: handle aggregate via a tranform later
 }
 
 export type DMMFDocument = Omit<ExternalDMMF.Document, 'mappings'> & {
@@ -30,21 +30,22 @@ export default function transformDMMF(
   };
 }
 
-export function getMappings(
-  mappings: ExternalDMMF.Mapping[],
+function getMappings(
+  mappings: ExternalDMMF.Mappings,
   datamodel: ExternalDMMF.Datamodel
 ): DMMFMapping[] {
-  return mappings
+  const modelOperations = mappings.modelOperations
     .filter((mapping) => {
       const model = datamodel.models.find((m) => m.name === mapping.model);
       if (!model) {
         throw new Error(`Mapping without model ${mapping.model}`);
       }
-      return model.fields;
+      return model.fields.some((f) => f.kind !== 'object');
     })
     .map((mapping: any) => ({
       model: mapping.model,
-      findOne: mapping.findSingle || mapping.findOne,
+      findUnique: mapping.findSingle || mapping.findOne,
+      findFirst: mapping.findFirst,
       findMany: mapping.findMany,
       create: mapping.createOne || mapping.createSingle || mapping.create,
       delete: mapping.deleteOne || mapping.deleteSingle || mapping.delete,
@@ -52,6 +53,7 @@ export function getMappings(
       deleteMany: mapping.deleteMany,
       updateMany: mapping.updateMany,
       upsert: mapping.upsertOne || mapping.upsertSingle || mapping.upsert,
-      //aggregate: mapping.aggregate, // TODO:
     }));
+
+  return modelOperations;
 }
