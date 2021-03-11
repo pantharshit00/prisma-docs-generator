@@ -51,4 +51,4 @@ Use `--port` or `-p` to change the port the express server uses.
 
 MIT Harshit Pant
 
-(This is not an official Prisma project. It is personally maintained by [me](https://github.com/pantharshit00)
+(This is not an official Prisma project. It is personally maintained by [me](https://github.com/pantharshit00) )
