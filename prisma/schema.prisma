@@ -1,6 +1,5 @@
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["atomicNumberOperations"]
+  provider = "prisma-client-js"
 }
 
 generator docs {
@@ -22,23 +21,24 @@ model Post {
   published Boolean  @default(false)
   author    User     @relation(fields: [authorId], references: [id])
   authorId  Int      @default(1)
-  @@map("posts")
+
   @@id([id, authorId])
   @@unique([authorId])
   @@unique(name: "test", fields: [content, title])
   @@index([id, authorId])
   @@index([authorId, title])
+  @@map("posts")
 }
 
 model Profile {
-  id     Int     @default(autoincrement()) @id
+  id     Int     @id @default(autoincrement())
   bio    String?
   user   User    @relation(fields: [userId], references: [id])
   userId Int     @unique
 }
 
 model User {
-  id      Int      @default(autoincrement()) @id
+  id      Int      @id @default(autoincrement())
   email   String   @unique
   name    String?
   posts   Post[]

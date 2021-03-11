@@ -38,7 +38,6 @@ type MGModelOperationKeys = {
 
 type MGModelOperationOutput = {
   type: string;
-  kind: string;
   required: boolean;
   list: boolean;
 };
@@ -184,8 +183,6 @@ export default class ModelGenerator
                   <div><strong>Type: </strong> <a href="#type-outputType-${
                     operation.output.type
                   }">${operation.output.type}</a></div>
-                  <div><strong>Kind: </strong>
-                  ${operation.output.kind}</div>
                   <div><strong>Required: </strong>
                   ${operation.output.required ? `Yes` : `No`}</div>
                   <div><strong>List: </strong>
@@ -373,7 +370,7 @@ export default class ModelGenerator
       const method = `prisma.${lowerCase(model.name)}.${op}`;
       switch (op) {
         case DMMF.ModelAction.create: {
-          const field = schema.outputTypes
+          const field = schema.outputObjectTypes.prisma
             .find((t) => t.name === 'Mutation')
             ?.fields.find((f) => f.name === val);
           ops.push({
@@ -397,15 +394,14 @@ const ${singular} = await ${method}({
             })),
             output: {
               type: field?.outputType.type as string,
-              kind: field?.outputType.kind,
-              required: field?.isRequired,
+              required: !field?.isNullable,
               list: field?.outputType.isList,
             },
           });
           break;
         }
         case DMMF.ModelAction.deleteMany: {
-          const field = schema.outputTypes
+          const field = schema.outputObjectTypes.prisma
             .find((t) => t.name === 'Mutation')
             ?.fields.find((f) => f.name === val);
           ops.push({
@@ -429,15 +425,14 @@ const { count } = await ${method}({
             })),
             output: {
               type: field?.outputType.type as string,
-              kind: field?.outputType.kind,
-              required: field?.isRequired,
+              required: !field?.isNullable,
               list: field?.outputType.isList,
             },
           });
           break;
         }
         case DMMF.ModelAction.delete: {
-          const field = schema.outputTypes
+          const field = schema.outputObjectTypes.prisma
             .find((t) => t.name === 'Mutation')
             ?.fields.find((f) => f.name === val);
           ops.push({
@@ -460,15 +455,14 @@ const ${singular} = await ${method}({
             })),
             output: {
               type: field?.outputType.type as string,
-              kind: field?.outputType.kind,
-              required: field?.isRequired,
+              required: !field?.isNullable,
               list: field?.outputType.isList,
             },
           });
           break;
         }
         case DMMF.ModelAction.findMany: {
-          const field = schema.outputTypes
+          const field = schema.outputObjectTypes.prisma
             .find((t) => t.name === 'Query')
             ?.fields.find((f) => f.name === val);
           ops.push({
@@ -490,15 +484,14 @@ const ${plural} = await ${method}({ take: 10 })
             })),
             output: {
               type: field?.outputType.type as string,
-              kind: field?.outputType.kind,
-              required: field?.isRequired,
+              required: !field?.isNullable,
               list: field?.outputType.isList,
             },
           });
           break;
         }
-        case DMMF.ModelAction.findOne: {
-          const field = schema.outputTypes
+        case DMMF.ModelAction.findUnique: {
+          const field = schema.outputObjectTypes.prisma
             .find((t) => t.name === 'Query')
             ?.fields.find((f) => f.name === val);
           ops.push({
@@ -522,8 +515,39 @@ const ${lowerCase(singular)} = await ${method}({
             })),
             output: {
               type: field?.outputType.type as string,
-              kind: field?.outputType.kind,
-              required: field?.isRequired,
+              required: !field?.isNullable,
+              list: field?.outputType.isList,
+            },
+          });
+          break;
+        }
+
+        case DMMF.ModelAction.findFirst: {
+          const field = schema.outputObjectTypes.prisma
+            .find((t) => t.name === 'Query')
+            ?.fields.find((f) => f.name === val);
+          ops.push({
+            name: op,
+            description: `Find first ${plural}`,
+            usage: Prism.highlight(
+              `// Get one ${singular}
+const ${lowerCase(singular)} = await ${method}({
+  where: {
+    // ... provide filter here
+  }
+})
+`,
+              Prism.languages.javascript,
+              'javascript'
+            ),
+            opKeys: field?.args.map((a) => ({
+              name: a.name,
+              types: a.inputTypes,
+              required: a.isRequired,
+            })),
+            output: {
+              type: field?.outputType.type as string,
+              required: !field?.isNullable,
               list: field?.outputType.isList,
             },
           });
@@ -531,7 +555,7 @@ const ${lowerCase(singular)} = await ${method}({
         }
 
         case DMMF.ModelAction.update: {
-          const field = schema.outputTypes
+          const field = schema.outputObjectTypes.prisma
             .find((t) => t.name === 'Mutation')
             ?.fields.find((f) => f.name === val);
           ops.push({
@@ -558,8 +582,7 @@ const ${lowerCase(singular)} = await ${method}({
             })),
             output: {
               type: field?.outputType.type as string,
-              kind: field?.outputType.kind,
-              required: field?.isRequired,
+              required: !field?.isNullable,
               list: field?.outputType.isList,
             },
           });
@@ -567,7 +590,7 @@ const ${lowerCase(singular)} = await ${method}({
         }
 
         case DMMF.ModelAction.updateMany: {
-          const field = schema.outputTypes
+          const field = schema.outputObjectTypes.prisma
             .find((t) => t.name === 'Mutation')
             ?.fields.find((f) => f.name === val);
           ops.push({
@@ -592,15 +615,14 @@ const ${lowerCase(singular)} = await ${method}({
             })),
             output: {
               type: field?.outputType.type as string,
-              kind: field?.outputType.kind,
-              required: field?.isRequired,
+              required: !field?.isNullable,
               list: field?.outputType.isList,
             },
           });
           break;
         }
         case DMMF.ModelAction.upsert: {
-          const field = schema.outputTypes
+          const field = schema.outputObjectTypes.prisma
             .find((t) => t.name === 'Mutation')
             ?.fields.find((f) => f.name === val);
           ops.push({
@@ -629,8 +651,7 @@ const ${lowerCase(singular)} = await ${method}({
             })),
             output: {
               type: field?.outputType.type as string,
-              kind: field?.outputType.kind,
-              required: field?.isRequired,
+              required: !field?.isNullable,
               list: field?.outputType.isList,
             },
           });

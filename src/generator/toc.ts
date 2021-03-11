@@ -16,7 +16,6 @@ type TOCModel = {
 type TOCTypes = {
   inputTypes: string[];
   outputTypes: string[];
-  enums: string[];
 };
 
 export default class TOCGenerator implements Generatable<TOCStructure> {
@@ -122,11 +121,15 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
 
   getTypes(dmmfSchema: DMMF.Schema): TOCTypes {
     return {
-      inputTypes: dmmfSchema.inputTypes.map((inputType) => inputType.name),
-      outputTypes: dmmfSchema.outputTypes
-        .map((outputType) => outputType.name)
-        .filter((ot) => ot !== 'Query' && ot !== 'Mutation'),
-      enums: dmmfSchema.enums.map((x) => x.name), // can't use enum as variable as it is reserved word in TS
+      inputTypes: dmmfSchema.inputObjectTypes.prisma.map(
+        (inputType) => inputType.name
+      ),
+      outputTypes: [
+        ...dmmfSchema.outputObjectTypes.model.map((ot) => ot.name),
+        ...dmmfSchema.outputObjectTypes.prisma
+          .map((outputType) => outputType.name)
+          .filter((ot) => ot !== 'Query' && ot !== 'Mutation'),
+      ],
     };
   }
 

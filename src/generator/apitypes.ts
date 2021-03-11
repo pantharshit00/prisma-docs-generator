@@ -17,8 +17,6 @@ type TGType = {
 type TGTypeField = {
   name: string;
   type: DMMF.SchemaArgInputType[];
-  kind: string;
-  required: boolean;
   nullable: boolean;
 };
 
@@ -50,14 +48,6 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
       </td>
 
       <td class="px-4 py-2 border">
-        ${field.kind}
-      </td>
-
-      <td class="px-4 py-2 border">
-        ${field.required ? '<strong>Yes</strong>' : 'No'}
-      </td>
-
-      <td class="px-4 py-2 border">
         ${field.nullable ? '<strong>Yes</strong>' : 'No'}
       </td>
     </tr>
@@ -75,8 +65,6 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
             <tr>
               <th class="px-4 py-2 border">Name</th>
               <th class="px-4 py-2 border">Type</th>
-              <th class="px-4 py-2 border">Kind</th>
-              <th class="px-4 py-2 border">Required</th>
               <th class="px-4 py-2 border">Nullable</th>
             </tr>
           </thead>
@@ -119,10 +107,8 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
     return dmmfInputType.map((inputType) => ({
       name: inputType.name,
       fields: inputType.fields.map((ip) => ({
-        kind: ip.inputTypes.length > 1 ? 'union' : ip.inputTypes[0].kind,
         name: ip.name,
         nullable: ip.isNullable,
-        required: ip.isRequired,
         type: ip.inputTypes,
       })),
     }));
@@ -132,16 +118,14 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
     return dmmfOutputTypes.map((outputType) => ({
       name: outputType.name,
       fields: outputType.fields.map((op) => ({
-        kind: op.outputType.kind,
         name: op.name,
-        nullable: Boolean(op.isNullable),
-        required: op.isRequired,
+        nullable: !op.isNullable,
         list: (op.outputType as any).isList,
         type: [
           {
             isList: op.outputType.isList,
-            kind: op.outputType.kind,
             type: op.outputType.type as string,
+            location: op.outputType.location,
           },
         ],
       })),
@@ -150,12 +134,13 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
 
   getData(d: DMMFDocument) {
     return {
-      inputTypes: this.getInputTypes(d.schema.inputTypes),
-      outputTypes: this.getOutputTypes(
-        d.schema.outputTypes.filter(
+      inputTypes: this.getInputTypes(d.schema.inputObjectTypes.prisma),
+      outputTypes: this.getOutputTypes([
+        ...d.schema.outputObjectTypes.model,
+        ...d.schema.outputObjectTypes.prisma.filter(
           (op) => op.name !== 'Query' && op.name !== 'Mutation'
-        )
-      ),
+        ),
+      ]),
     };
   }
 }
