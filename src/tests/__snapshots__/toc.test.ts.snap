@@ -64,7 +64,7 @@ exports[`TOC renders on toHTML 1`] = `
                 <a href=\\"#input-types\\">Input Types</a>
               </div>
               <ul class=\\"pl-3 ml-1 border-l-2 border-gray-400\\">
-              <li><a href=\\"#type-inputType-PostWhereInput\\">PostWhereInput</a></li><li><a href=\\"#type-inputType-PostOrderByInput\\">PostOrderByInput</a></li><li><a href=\\"#type-inputType-PostWhereUniqueInput\\">PostWhereUniqueInput</a></li><li><a href=\\"#type-inputType-UserWhereInput\\">UserWhereInput</a></li><li><a href=\\"#type-inputType-UserOrderByInput\\">UserOrderByInput</a></li><li><a href=\\"#type-inputType-UserWhereUniqueInput\\">UserWhereUniqueInput</a></li><li><a href=\\"#type-inputType-PostCreateInput\\">PostCreateInput</a></li><li><a href=\\"#type-inputType-PostUpdateInput\\">PostUpdateInput</a></li><li><a href=\\"#type-inputType-PostUpdateManyMutationInput\\">PostUpdateManyMutationInput</a></li><li><a href=\\"#type-inputType-UserCreateInput\\">UserCreateInput</a></li><li><a href=\\"#type-inputType-UserUpdateInput\\">UserUpdateInput</a></li><li><a href=\\"#type-inputType-UserUpdateManyMutationInput\\">UserUpdateManyMutationInput</a></li><li><a href=\\"#type-inputType-StringFilter\\">StringFilter</a></li><li><a href=\\"#type-inputType-StringFieldUpdateOperationsInput\\">StringFieldUpdateOperationsInput</a></li><li><a href=\\"#type-inputType-NestedStringFilter\\">NestedStringFilter</a></li>
+              
               </ul>
             </li>
             <li class=\\"mb-4\\">
@@ -72,7 +72,7 @@ exports[`TOC renders on toHTML 1`] = `
                 <a href=\\"#output-types\\">Output Types</a>
               </div>
               <ul class=\\"pl-3 ml-1 border-l-2 border-gray-400\\">
-              <li><a href=\\"#type-outputType-Post\\">Post</a></li><li><a href=\\"#type-outputType-AggregatePost\\">AggregatePost</a></li><li><a href=\\"#type-outputType-User\\">User</a></li><li><a href=\\"#type-outputType-AggregateUser\\">AggregateUser</a></li><li><a href=\\"#type-outputType-BatchPayload\\">BatchPayload</a></li>
+              <li><a href=\\"#type-outputType-Post\\">Post</a></li><li><a href=\\"#type-outputType-User\\">User</a></li>
               </ul>
             </li>
           </ul>

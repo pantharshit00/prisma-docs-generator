@@ -100,8 +100,6 @@ exports[`model generator renders model operation html correctly 1`] = `
                   </table>
                   <h4 class=\\"text-lg mb-2\\">Output</h4>
                   <div><strong>Type: </strong> <a href=\\"#type-outputType-User\\">User</a></div>
-                  <div><strong>Kind: </strong>
-                  object</div>
                   <div><strong>Required: </strong>
                   Yes</div>
                   <div><strong>List: </strong>

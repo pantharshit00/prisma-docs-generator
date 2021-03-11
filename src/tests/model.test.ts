@@ -168,11 +168,15 @@ describe('model generator', () => {
               name: 'where',
               required: false,
               types: [
-                { type: 'UserWhereInput', isList: false, kind: 'object' },
+                {
+                  type: 'UserWhereInput',
+                  isList: false,
+                  location: 'inputObjectTypes',
+                },
               ],
             },
           ],
-          output: { type: 'User', required: true, kind: 'object', list: false },
+          output: { type: 'User', required: true, list: false },
         },
         'User'
       )
