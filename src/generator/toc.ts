@@ -124,9 +124,12 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
       inputTypes: dmmfSchema.inputObjectTypes.prisma.map(
         (inputType) => inputType.name
       ),
-      outputTypes: dmmfSchema.outputObjectTypes.prisma
-        .map((outputType) => outputType.name)
-        .filter((ot) => ot !== 'Query' && ot !== 'Mutation'),
+      outputTypes: [
+        ...dmmfSchema.outputObjectTypes.model.map((ot) => ot.name),
+        ...dmmfSchema.outputObjectTypes.prisma
+          .map((outputType) => outputType.name)
+          .filter((ot) => ot !== 'Query' && ot !== 'Mutation'),
+      ],
     };
   }
 

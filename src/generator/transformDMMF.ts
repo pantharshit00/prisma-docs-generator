@@ -44,7 +44,7 @@ function getMappings(
     })
     .map((mapping: any) => ({
       model: mapping.model,
-      findUnique: mapping.findSingle || mapping.findOne,
+      findUnique: mapping.findSingle || mapping.findOne || mapping.findUnique,
       findFirst: mapping.findFirst,
       findMany: mapping.findMany,
       create: mapping.createOne || mapping.createSingle || mapping.create,

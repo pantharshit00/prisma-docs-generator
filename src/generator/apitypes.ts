@@ -135,11 +135,12 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
   getData(d: DMMFDocument) {
     return {
       inputTypes: this.getInputTypes(d.schema.inputObjectTypes.prisma),
-      outputTypes: this.getOutputTypes(
-        d.schema.outputObjectTypes.prisma.filter(
+      outputTypes: this.getOutputTypes([
+        ...d.schema.outputObjectTypes.model,
+        ...d.schema.outputObjectTypes.prisma.filter(
           (op) => op.name !== 'Query' && op.name !== 'Mutation'
-        )
-      ),
+        ),
+      ]),
     };
   }
 }
