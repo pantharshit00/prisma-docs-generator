@@ -14,24 +14,27 @@ generatorHandler({
   async onGenerate(options) {
     const dmmf = transformDMMF(options.dmmf);
     const html = new HTMLPrinter(dmmf);
-    if (options.generator.output) {
+
+    const output = options.generator.output?.value;
+
+    if (output) {
       const styleFile = await fs.promises.readFile(
         path.join(__dirname, 'styles', 'main.css')
       );
       try {
-        await fs.promises.mkdir(options.generator.output, {
+        await fs.promises.mkdir(output, {
           recursive: true,
         });
-        await fs.promises.mkdir(path.join(options.generator.output, 'styles'), {
+        await fs.promises.mkdir(path.join(output, 'styles'), {
           recursive: true,
         });
         await fs.promises.writeFile(
-          path.join(options.generator.output, 'index.html'),
+          path.join(output, 'index.html'),
           html.toHTML()
         );
 
         await fs.promises.writeFile(
-          path.join(options.generator.output, 'styles', 'main.css'),
+          path.join(output, 'styles', 'main.css'),
           styleFile
         );
       } catch (e) {

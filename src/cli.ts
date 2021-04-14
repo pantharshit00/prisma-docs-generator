@@ -92,7 +92,7 @@ async function execute<T extends meow.AnyFlags>(cli: meow.Result<T>) {
         process.exit(1);
       }
 
-      const servePath = docsGen.options?.generator.output;
+      const servePath = docsGen.options?.generator.output?.value;
       if (!servePath) {
         console.error(
           kleur.red('Unable to resolve output path for the generator')
