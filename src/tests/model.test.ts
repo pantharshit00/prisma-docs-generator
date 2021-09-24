@@ -1,5 +1,6 @@
 import ModelGenerator from '../generator/model';
 import transformDMMF from '../generator/transformDMMF';
+//@ts-ignore
 import { getDMMF } from '@prisma/sdk';
 
 describe('model generator', () => {

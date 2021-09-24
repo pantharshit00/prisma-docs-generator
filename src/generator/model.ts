@@ -18,7 +18,7 @@ type MGModel = {
 
 type MGModelDirective = {
   name: string;
-  values: string[];
+  values: any[];
 };
 
 type MGModelField = {
@@ -69,7 +69,8 @@ let fieldDirectiveMap = new Map<string, string>([
 ]);
 
 export default class ModelGenerator
-  implements Generatable<ModelGeneratorStructure> {
+  implements Generatable<ModelGeneratorStructure>
+{
   data: ModelGeneratorStructure;
 
   constructor(d: DMMFDocument) {
@@ -271,9 +272,8 @@ export default class ModelGenerator
   getModelDirective(model: DMMF.Model): MGModelDirective[] {
     let directiveValue: MGModelDirective[] = [];
 
-    if (model.idFields.length > 0) {
-      directiveValue.push({ name: '@@id', values: model.idFields });
-    }
+    if (model.primaryKey)
+      directiveValue.push({ name: '@@id', values: model.primaryKey.fields });
 
     if (model.uniqueFields.length > 0) {
       model.uniqueFields.forEach((uniqueField) => {
