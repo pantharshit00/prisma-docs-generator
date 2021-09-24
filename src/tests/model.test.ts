@@ -30,6 +30,10 @@ describe('model generator', () => {
       values: ['name'],
     });
     expect(spy).toHaveBeenCalledWith({
+      name: '@@id',
+      values: ['name', 'id'],
+    });
+    expect(spy).toHaveBeenCalledWith({
       name: '@@unique',
       values: ['name'],
     });
