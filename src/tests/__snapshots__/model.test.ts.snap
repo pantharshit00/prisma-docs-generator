@@ -54,7 +54,7 @@ exports[`model generator renders model field table row correctly 2`] = `
         </ul>
       </td>
       <td class=\\"px-4 py-2 border\\">
-        <b>Yes</b>
+        <strong>Yes</strong>
       </td>
       <td class=\\"px-4 py-2 border\\">
         This is some docs
