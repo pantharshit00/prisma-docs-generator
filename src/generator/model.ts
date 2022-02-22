@@ -117,7 +117,7 @@ export default class ModelGenerator
         </ul>
       </td>
       <td class="px-4 py-2 border">
-        ${field.required ? `<b>Yes</b>` : 'No'}
+        ${field.required ? `<strong>Yes</strong>` : 'No'}
       </td>
       <td class="px-4 py-2 border">
         ${field.documentation ?? '-'}
@@ -172,7 +172,7 @@ export default class ModelGenerator
                           .join(' | ')}
                         </td>
                         <td class="px-4 py-2 border">
-                         ${opK.required ? '<b>Yes</b>' : 'No'} 
+                         ${opK.required ? '<strong>Yes</strong>' : 'No'} 
                         </td>
                       </tr>
                       `
