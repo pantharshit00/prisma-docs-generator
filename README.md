@@ -36,6 +36,18 @@ generator docs {
 }
 ```
 
+### includeRelationFields
+
+You can specify whether relation fields are shown or not.
+Default value is `true`.
+
+```prisma
+generator docs {
+  provider = "node node_modules/prisma-docs-generator"
+  includeRelationFields = false
+}
+```
+
 ## CLI
 
 This package also ships with a CLI which is used to serve the docs right now. It has the following subcommands:

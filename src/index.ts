@@ -12,7 +12,12 @@ generatorHandler({
     };
   },
   async onGenerate(options) {
-    const dmmf = transformDMMF(options.dmmf);
+    const { config } = options.generator;
+    const includeRelationFields = config.includeRelationFields === 'false' ? false : true;
+
+    const dmmf = transformDMMF(options.dmmf, {
+      includeRelationFields,
+    });
     const html = new HTMLPrinter(dmmf);
 
     const output = options.generator.output?.value;

@@ -16,7 +16,9 @@ describe('model generator', () => {
     `;
 
     const dmmf = await getDMMF({ datamodel: datamodelString });
-    const transformedDmmf = transformDMMF(dmmf);
+    const transformedDmmf = transformDMMF(dmmf, {
+      includeRelationFields: true,
+    });
 
     const modelGen = new ModelGenerator(transformedDmmf);
     const spy = jest.spyOn(modelGen, 'getModelDiretiveHTML');
@@ -61,7 +63,9 @@ describe('model generator', () => {
     `;
 
     const dmmf = await getDMMF({ datamodel: datamodelString });
-    const transformedDmmf = transformDMMF(dmmf);
+    const transformedDmmf = transformDMMF(dmmf, {
+      includeRelationFields: true,
+    });
 
     const modelGen = new ModelGenerator(transformedDmmf);
     const spy = jest.spyOn(modelGen, 'getModelFieldTableRow');
@@ -150,7 +154,9 @@ describe('model generator', () => {
     `;
 
     const dmmf = await getDMMF({ datamodel: datamodelString });
-    const transformedDmmf = transformDMMF(dmmf);
+    const transformedDmmf = transformDMMF(dmmf, {
+      includeRelationFields: true,
+    });
 
     const modelGen = new ModelGenerator(transformedDmmf);
     const spy = jest.spyOn(modelGen, 'getModelOperationMarkup');
