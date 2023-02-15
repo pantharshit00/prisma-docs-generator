@@ -18,7 +18,9 @@ const datamodel = /* Prisma */ `
 describe('TOC', () => {
   it('renders TOC Subheader correctly', async () => {
     const dmmf = await getDMMF({ datamodel });
-    const toc = new TOCGenerator(transformDMMF(dmmf));
+    const toc = new TOCGenerator(transformDMMF(dmmf, {
+      includeRelationFields: true,
+    }));
     const spy = jest.spyOn(toc, 'getTOCSubHeaderHTML');
     // trigger the function
     toc.toHTML();
@@ -30,7 +32,9 @@ describe('TOC', () => {
 
   it('renders TOC subfield correctly', async () => {
     const dmmf = await getDMMF({ datamodel });
-    const toc = new TOCGenerator(transformDMMF(dmmf));
+    const toc = new TOCGenerator(transformDMMF(dmmf, {
+      includeRelationFields: true,
+    }));
 
     const spy = jest.spyOn(toc, 'getSubFieldHTML');
     toc.toHTML();
@@ -50,7 +54,9 @@ describe('TOC', () => {
 
   it('renders on toHTML', async () => {
     const dmmf = await getDMMF({ datamodel });
-    const toc = new TOCGenerator(transformDMMF(dmmf));
+    const toc = new TOCGenerator(transformDMMF(dmmf, {
+      includeRelationFields: true,
+    }));
 
     const subheaderSpy = jest.spyOn(toc, 'getTOCSubHeaderHTML');
     const subfieldSpy = jest.spyOn(toc, 'getSubFieldHTML');

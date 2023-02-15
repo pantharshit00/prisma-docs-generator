@@ -21,9 +21,23 @@ export type DMMFDocument = Omit<ExternalDMMF.Document, 'mappings'> & {
   mappings: DMMFMapping[];
 };
 
+type OptionsForTransformDMMF = {
+  includeRelationFields: boolean
+}
+
 export default function transformDMMF(
-  dmmf: ExternalDMMF.Document
+  dmmf: ExternalDMMF.Document,
+  { includeRelationFields }: OptionsForTransformDMMF
 ): DMMFDocument {
+  if (!includeRelationFields) {
+    dmmf.datamodel.models = dmmf.datamodel.models.map(model => {
+      model.fields = model.fields.filter(
+        field => !field.relationName
+      );
+      return model;
+    });
+  }
+
   return {
     ...dmmf,
     mappings: getMappings(dmmf.mappings, dmmf.datamodel),
