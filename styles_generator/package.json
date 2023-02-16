@@ -4,12 +4,12 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "autoprefixer": "^10.2.5",
+    "autoprefixer": "^10.4.13",
     "cross-env": "^7.0.3",
-    "cssnano": "^4.1.10",
-    "postcss": "^8.2.8",
-    "postcss-cli": "^8.3.1",
-    "tailwindcss": "^2.0.3"
+    "cssnano": "^5.1.15",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
+    "tailwindcss": "^3.2.6"
   },
   "scripts": {
     "build": "cross-env NODE_ENV=production postcss -o dist/main.css ./styles/**/**.css",

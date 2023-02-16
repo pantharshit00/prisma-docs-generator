@@ -3,7 +3,7 @@
 import meow from 'meow';
 import kleur from 'kleur';
 import express from 'express';
-import { getSchemaPath, getGenerators } from '@prisma/sdk';
+import { getSchemaPath, getGenerators } from '@prisma/internals';
 import { Server } from 'http';
 
 const cli = meow(
@@ -81,7 +81,10 @@ async function execute<T extends meow.AnyFlags>(cli: meow.Result<T>) {
         console.error(kleur.red('Unable to find schema.prisma file'));
         process.exit(1);
       }
-      const gens = await getGenerators({ schemaPath: schemaPath });
+      const gens = await getGenerators({
+        schemaPath: schemaPath,
+        dataProxy: false,
+      });
       const docsGen = gens.find(
         (gen) => gen.manifest?.prettyName === 'Prisma Docs Generator'
       );

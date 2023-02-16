@@ -2,77 +2,77 @@
 
 exports[`TOC renders TOC Subheader correctly 1`] = `
 "
-    <div class=\\"font-semibold text-gray-700\\">
-      <a href=\\"#model-Post\\">Post</a>
+    <div class="font-semibold text-gray-700">
+      <a href="#model-Post">Post</a>
     </div>
    "
 `;
 
-exports[`TOC renders TOC subfield correctly 1`] = `"<li><a href=\\"#model-Post-userId\\">userId</a></li>"`;
+exports[`TOC renders TOC subfield correctly 1`] = `"<li><a href="#model-Post-userId">userId</a></li>"`;
 
 exports[`TOC renders on toHTML 1`] = `
 "
         <div>
-          <h5 class=\\"mb-2 font-bold\\"><a href=\\"#models\\">Models</a></h5>
-          <ul class=\\"mb-2 ml-1\\">
+          <h5 class="mb-2 font-bold"><a href="#models">Models</a></h5>
+          <ul class="mb-2 ml-1">
               
-            <li class=\\"mb-4\\">
+            <li class="mb-4">
                 
-    <div class=\\"font-semibold text-gray-700\\">
-      <a href=\\"#model-Post\\">Post</a>
+    <div class="font-semibold text-gray-700">
+      <a href="#model-Post">Post</a>
     </div>
    
-                  <div class=\\"mt-1 ml-2\\">
-                    <div class=\\"mb-1 font-medium text-gray-600\\"><a href=\\"#model-Post-fields\\">Fields</a></div>
-                      <ul class=\\"pl-3 ml-1 border-l-2 border-gray-400\\">
-                      <li><a href=\\"#model-Post-id\\">id</a></li><li><a href=\\"#model-Post-name\\">name</a></li>
+                  <div class="mt-1 ml-2">
+                    <div class="mb-1 font-medium text-gray-600"><a href="#model-Post-fields">Fields</a></div>
+                      <ul class="pl-3 ml-1 border-l-2 border-gray-400">
+                      <li><a href="#model-Post-id">id</a></li><li><a href="#model-Post-name">name</a></li>
                       </ul>
                   </div>
-                  <div class=\\"mt-2 ml-2\\">
-                    <div class=\\"mb-1 font-medium text-gray-600\\"><a href=\\"#model-Post-operations\\">Operations</a></div>
-                    <ul class=\\"pl-3 ml-1 border-l-2 border-gray-400\\">
-                    <li><a href=\\"#model-Post-findUnique\\">findUnique</a></li><li><a href=\\"#model-Post-findFirst\\">findFirst</a></li><li><a href=\\"#model-Post-findMany\\">findMany</a></li><li><a href=\\"#model-Post-create\\">create</a></li><li><a href=\\"#model-Post-delete\\">delete</a></li><li><a href=\\"#model-Post-update\\">update</a></li><li><a href=\\"#model-Post-deleteMany\\">deleteMany</a></li><li><a href=\\"#model-Post-updateMany\\">updateMany</a></li><li><a href=\\"#model-Post-upsert\\">upsert</a></li>
+                  <div class="mt-2 ml-2">
+                    <div class="mb-1 font-medium text-gray-600"><a href="#model-Post-operations">Operations</a></div>
+                    <ul class="pl-3 ml-1 border-l-2 border-gray-400">
+                    <li><a href="#model-Post-findUnique">findUnique</a></li><li><a href="#model-Post-findFirst">findFirst</a></li><li><a href="#model-Post-findMany">findMany</a></li><li><a href="#model-Post-create">create</a></li><li><a href="#model-Post-delete">delete</a></li><li><a href="#model-Post-update">update</a></li><li><a href="#model-Post-deleteMany">deleteMany</a></li><li><a href="#model-Post-updateMany">updateMany</a></li><li><a href="#model-Post-upsert">upsert</a></li>
                     </ul>
                   </div>
             </li>
               
-            <li class=\\"mb-4\\">
+            <li class="mb-4">
                 
-    <div class=\\"font-semibold text-gray-700\\">
-      <a href=\\"#model-User\\">User</a>
+    <div class="font-semibold text-gray-700">
+      <a href="#model-User">User</a>
     </div>
    
-                  <div class=\\"mt-1 ml-2\\">
-                    <div class=\\"mb-1 font-medium text-gray-600\\"><a href=\\"#model-User-fields\\">Fields</a></div>
-                      <ul class=\\"pl-3 ml-1 border-l-2 border-gray-400\\">
-                      <li><a href=\\"#model-User-userId\\">userId</a></li><li><a href=\\"#model-User-something\\">something</a></li>
+                  <div class="mt-1 ml-2">
+                    <div class="mb-1 font-medium text-gray-600"><a href="#model-User-fields">Fields</a></div>
+                      <ul class="pl-3 ml-1 border-l-2 border-gray-400">
+                      <li><a href="#model-User-userId">userId</a></li><li><a href="#model-User-something">something</a></li>
                       </ul>
                   </div>
-                  <div class=\\"mt-2 ml-2\\">
-                    <div class=\\"mb-1 font-medium text-gray-600\\"><a href=\\"#model-User-operations\\">Operations</a></div>
-                    <ul class=\\"pl-3 ml-1 border-l-2 border-gray-400\\">
-                    <li><a href=\\"#model-User-findUnique\\">findUnique</a></li><li><a href=\\"#model-User-findFirst\\">findFirst</a></li><li><a href=\\"#model-User-findMany\\">findMany</a></li><li><a href=\\"#model-User-create\\">create</a></li><li><a href=\\"#model-User-delete\\">delete</a></li><li><a href=\\"#model-User-update\\">update</a></li><li><a href=\\"#model-User-deleteMany\\">deleteMany</a></li><li><a href=\\"#model-User-updateMany\\">updateMany</a></li><li><a href=\\"#model-User-upsert\\">upsert</a></li>
+                  <div class="mt-2 ml-2">
+                    <div class="mb-1 font-medium text-gray-600"><a href="#model-User-operations">Operations</a></div>
+                    <ul class="pl-3 ml-1 border-l-2 border-gray-400">
+                    <li><a href="#model-User-findUnique">findUnique</a></li><li><a href="#model-User-findFirst">findFirst</a></li><li><a href="#model-User-findMany">findMany</a></li><li><a href="#model-User-create">create</a></li><li><a href="#model-User-delete">delete</a></li><li><a href="#model-User-update">update</a></li><li><a href="#model-User-deleteMany">deleteMany</a></li><li><a href="#model-User-updateMany">updateMany</a></li><li><a href="#model-User-upsert">upsert</a></li>
                     </ul>
                   </div>
             </li>
               
             </ul>
-          <h5 class=\\"mt-12 mb-2 font-bold\\"><a href=\\"#types\\">Types</a></h5>
-          <ul class=\\"mb-2 ml-1\\">
-            <li class=\\"mb-4\\">
-              <div class=\\"font-semibold text-gray-700\\">
-                <a href=\\"#input-types\\">Input Types</a>
+          <h5 class="mt-12 mb-2 font-bold"><a href="#types">Types</a></h5>
+          <ul class="mb-2 ml-1">
+            <li class="mb-4">
+              <div class="font-semibold text-gray-700">
+                <a href="#input-types">Input Types</a>
               </div>
-              <ul class=\\"pl-3 ml-1 border-l-2 border-gray-400\\">
-              <li><a href=\\"#type-inputType-PostWhereInput\\">PostWhereInput</a></li><li><a href=\\"#type-inputType-PostOrderByWithRelationInput\\">PostOrderByWithRelationInput</a></li><li><a href=\\"#type-inputType-PostWhereUniqueInput\\">PostWhereUniqueInput</a></li><li><a href=\\"#type-inputType-PostOrderByWithAggregationInput\\">PostOrderByWithAggregationInput</a></li><li><a href=\\"#type-inputType-PostScalarWhereWithAggregatesInput\\">PostScalarWhereWithAggregatesInput</a></li><li><a href=\\"#type-inputType-UserWhereInput\\">UserWhereInput</a></li><li><a href=\\"#type-inputType-UserOrderByWithRelationInput\\">UserOrderByWithRelationInput</a></li><li><a href=\\"#type-inputType-UserWhereUniqueInput\\">UserWhereUniqueInput</a></li><li><a href=\\"#type-inputType-UserOrderByWithAggregationInput\\">UserOrderByWithAggregationInput</a></li><li><a href=\\"#type-inputType-UserScalarWhereWithAggregatesInput\\">UserScalarWhereWithAggregatesInput</a></li><li><a href=\\"#type-inputType-PostCreateInput\\">PostCreateInput</a></li><li><a href=\\"#type-inputType-PostUncheckedCreateInput\\">PostUncheckedCreateInput</a></li><li><a href=\\"#type-inputType-PostUpdateInput\\">PostUpdateInput</a></li><li><a href=\\"#type-inputType-PostUncheckedUpdateInput\\">PostUncheckedUpdateInput</a></li><li><a href=\\"#type-inputType-PostUpdateManyMutationInput\\">PostUpdateManyMutationInput</a></li><li><a href=\\"#type-inputType-PostUncheckedUpdateManyInput\\">PostUncheckedUpdateManyInput</a></li><li><a href=\\"#type-inputType-UserCreateInput\\">UserCreateInput</a></li><li><a href=\\"#type-inputType-UserUncheckedCreateInput\\">UserUncheckedCreateInput</a></li><li><a href=\\"#type-inputType-UserUpdateInput\\">UserUpdateInput</a></li><li><a href=\\"#type-inputType-UserUncheckedUpdateInput\\">UserUncheckedUpdateInput</a></li><li><a href=\\"#type-inputType-UserUpdateManyMutationInput\\">UserUpdateManyMutationInput</a></li><li><a href=\\"#type-inputType-UserUncheckedUpdateManyInput\\">UserUncheckedUpdateManyInput</a></li><li><a href=\\"#type-inputType-StringFilter\\">StringFilter</a></li><li><a href=\\"#type-inputType-PostCountOrderByAggregateInput\\">PostCountOrderByAggregateInput</a></li><li><a href=\\"#type-inputType-PostMaxOrderByAggregateInput\\">PostMaxOrderByAggregateInput</a></li><li><a href=\\"#type-inputType-PostMinOrderByAggregateInput\\">PostMinOrderByAggregateInput</a></li><li><a href=\\"#type-inputType-StringWithAggregatesFilter\\">StringWithAggregatesFilter</a></li><li><a href=\\"#type-inputType-UserCountOrderByAggregateInput\\">UserCountOrderByAggregateInput</a></li><li><a href=\\"#type-inputType-UserMaxOrderByAggregateInput\\">UserMaxOrderByAggregateInput</a></li><li><a href=\\"#type-inputType-UserMinOrderByAggregateInput\\">UserMinOrderByAggregateInput</a></li><li><a href=\\"#type-inputType-StringFieldUpdateOperationsInput\\">StringFieldUpdateOperationsInput</a></li><li><a href=\\"#type-inputType-NestedStringFilter\\">NestedStringFilter</a></li><li><a href=\\"#type-inputType-NestedStringWithAggregatesFilter\\">NestedStringWithAggregatesFilter</a></li><li><a href=\\"#type-inputType-NestedIntFilter\\">NestedIntFilter</a></li>
+              <ul class="pl-3 ml-1 border-l-2 border-gray-400">
+              <li><a href="#type-inputType-PostWhereInput">PostWhereInput</a></li><li><a href="#type-inputType-PostOrderByWithRelationInput">PostOrderByWithRelationInput</a></li><li><a href="#type-inputType-PostWhereUniqueInput">PostWhereUniqueInput</a></li><li><a href="#type-inputType-PostOrderByWithAggregationInput">PostOrderByWithAggregationInput</a></li><li><a href="#type-inputType-PostScalarWhereWithAggregatesInput">PostScalarWhereWithAggregatesInput</a></li><li><a href="#type-inputType-UserWhereInput">UserWhereInput</a></li><li><a href="#type-inputType-UserOrderByWithRelationInput">UserOrderByWithRelationInput</a></li><li><a href="#type-inputType-UserWhereUniqueInput">UserWhereUniqueInput</a></li><li><a href="#type-inputType-UserOrderByWithAggregationInput">UserOrderByWithAggregationInput</a></li><li><a href="#type-inputType-UserScalarWhereWithAggregatesInput">UserScalarWhereWithAggregatesInput</a></li><li><a href="#type-inputType-PostCreateInput">PostCreateInput</a></li><li><a href="#type-inputType-PostUncheckedCreateInput">PostUncheckedCreateInput</a></li><li><a href="#type-inputType-PostUpdateInput">PostUpdateInput</a></li><li><a href="#type-inputType-PostUncheckedUpdateInput">PostUncheckedUpdateInput</a></li><li><a href="#type-inputType-PostUpdateManyMutationInput">PostUpdateManyMutationInput</a></li><li><a href="#type-inputType-PostUncheckedUpdateManyInput">PostUncheckedUpdateManyInput</a></li><li><a href="#type-inputType-UserCreateInput">UserCreateInput</a></li><li><a href="#type-inputType-UserUncheckedCreateInput">UserUncheckedCreateInput</a></li><li><a href="#type-inputType-UserUpdateInput">UserUpdateInput</a></li><li><a href="#type-inputType-UserUncheckedUpdateInput">UserUncheckedUpdateInput</a></li><li><a href="#type-inputType-UserUpdateManyMutationInput">UserUpdateManyMutationInput</a></li><li><a href="#type-inputType-UserUncheckedUpdateManyInput">UserUncheckedUpdateManyInput</a></li><li><a href="#type-inputType-StringFilter">StringFilter</a></li><li><a href="#type-inputType-PostCountOrderByAggregateInput">PostCountOrderByAggregateInput</a></li><li><a href="#type-inputType-PostMaxOrderByAggregateInput">PostMaxOrderByAggregateInput</a></li><li><a href="#type-inputType-PostMinOrderByAggregateInput">PostMinOrderByAggregateInput</a></li><li><a href="#type-inputType-StringWithAggregatesFilter">StringWithAggregatesFilter</a></li><li><a href="#type-inputType-UserCountOrderByAggregateInput">UserCountOrderByAggregateInput</a></li><li><a href="#type-inputType-UserMaxOrderByAggregateInput">UserMaxOrderByAggregateInput</a></li><li><a href="#type-inputType-UserMinOrderByAggregateInput">UserMinOrderByAggregateInput</a></li><li><a href="#type-inputType-StringFieldUpdateOperationsInput">StringFieldUpdateOperationsInput</a></li><li><a href="#type-inputType-NestedStringFilter">NestedStringFilter</a></li><li><a href="#type-inputType-NestedStringWithAggregatesFilter">NestedStringWithAggregatesFilter</a></li><li><a href="#type-inputType-NestedIntFilter">NestedIntFilter</a></li>
               </ul>
             </li>
-            <li class=\\"mb-4\\">
-              <div class=\\"font-semibold text-gray-700\\">
-                <a href=\\"#output-types\\">Output Types</a>
+            <li class="mb-4">
+              <div class="font-semibold text-gray-700">
+                <a href="#output-types">Output Types</a>
               </div>
-              <ul class=\\"pl-3 ml-1 border-l-2 border-gray-400\\">
-              <li><a href=\\"#type-outputType-Post\\">Post</a></li><li><a href=\\"#type-outputType-User\\">User</a></li><li><a href=\\"#type-outputType-AggregatePost\\">AggregatePost</a></li><li><a href=\\"#type-outputType-PostGroupByOutputType\\">PostGroupByOutputType</a></li><li><a href=\\"#type-outputType-AggregateUser\\">AggregateUser</a></li><li><a href=\\"#type-outputType-UserGroupByOutputType\\">UserGroupByOutputType</a></li><li><a href=\\"#type-outputType-AffectedRowsOutput\\">AffectedRowsOutput</a></li><li><a href=\\"#type-outputType-PostCountAggregateOutputType\\">PostCountAggregateOutputType</a></li><li><a href=\\"#type-outputType-PostMinAggregateOutputType\\">PostMinAggregateOutputType</a></li><li><a href=\\"#type-outputType-PostMaxAggregateOutputType\\">PostMaxAggregateOutputType</a></li><li><a href=\\"#type-outputType-UserCountAggregateOutputType\\">UserCountAggregateOutputType</a></li><li><a href=\\"#type-outputType-UserMinAggregateOutputType\\">UserMinAggregateOutputType</a></li><li><a href=\\"#type-outputType-UserMaxAggregateOutputType\\">UserMaxAggregateOutputType</a></li>
+              <ul class="pl-3 ml-1 border-l-2 border-gray-400">
+              <li><a href="#type-outputType-Post">Post</a></li><li><a href="#type-outputType-User">User</a></li><li><a href="#type-outputType-AggregatePost">AggregatePost</a></li><li><a href="#type-outputType-PostGroupByOutputType">PostGroupByOutputType</a></li><li><a href="#type-outputType-AggregateUser">AggregateUser</a></li><li><a href="#type-outputType-UserGroupByOutputType">UserGroupByOutputType</a></li><li><a href="#type-outputType-AffectedRowsOutput">AffectedRowsOutput</a></li><li><a href="#type-outputType-PostCountAggregateOutputType">PostCountAggregateOutputType</a></li><li><a href="#type-outputType-PostMinAggregateOutputType">PostMinAggregateOutputType</a></li><li><a href="#type-outputType-PostMaxAggregateOutputType">PostMaxAggregateOutputType</a></li><li><a href="#type-outputType-UserCountAggregateOutputType">UserCountAggregateOutputType</a></li><li><a href="#type-outputType-UserMinAggregateOutputType">UserMinAggregateOutputType</a></li><li><a href="#type-outputType-UserMaxAggregateOutputType">UserMaxAggregateOutputType</a></li>
               </ul>
             </li>
           </ul>

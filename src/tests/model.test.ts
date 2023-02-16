@@ -1,7 +1,7 @@
 import ModelGenerator from '../generator/model';
 import transformDMMF from '../generator/transformDMMF';
 //@ts-ignore
-import { getDMMF } from '@prisma/sdk';
+import { getDMMF } from '@prisma/internals';
 
 describe('model generator', () => {
   it('renders model directive html correctly', async () => {

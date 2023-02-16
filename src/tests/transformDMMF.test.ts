@@ -1,6 +1,6 @@
 import transformDMMF from '../generator/transformDMMF';
 //@ts-ignore
-import { getDMMF } from '@prisma/sdk';
+import { getDMMF } from '@prisma/internals';
 
 describe('transformDMMF', () => {
   it('show relation fields when includeRelationFields = true', async () => {
@@ -78,19 +78,11 @@ describe('transformDMMF', () => {
         models: [
           {
             name: 'User',
-            fields: [
-              { name: 'id' },
-              { name: 'name' },
-              { name: 'otherField' },
-            ],
+            fields: [{ name: 'id' }, { name: 'name' }, { name: 'otherField' }],
           },
           {
             name: 'Post',
-            fields: [
-              { name: 'id' },
-              { name: 'title' },
-              { name: 'userId' },
-            ],
+            fields: [{ name: 'id' }, { name: 'title' }, { name: 'userId' }],
           },
         ],
       },
