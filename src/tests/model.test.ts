@@ -6,9 +6,14 @@ import { getDMMF } from '@prisma/internals';
 describe('model generator', () => {
   it('renders model directive html correctly', async () => {
     const datamodelString = /* Prisma */ `
+      datasource postgres {
+        provider = "postgresql"
+        url = env("DATABASE_URL")
+      }
       model User {
         id String @default(cuid())
         name String
+        arrayField String[] @default([])
         @@index([name])
         @@id([name, id])
         @@unique([name])

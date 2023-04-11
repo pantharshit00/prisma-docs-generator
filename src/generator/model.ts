@@ -193,6 +193,8 @@ export default class ModelGenerator
   }
 
   toHTML() {
+
+
     return `
         <div class="mb-8">
           <h1 class="text-3xl text-gray-800" id="models">Models</h1>
@@ -335,7 +337,12 @@ export default class ModelGenerator
           ) {
             directives.push(`${mappedDirectiveValue}(${field.default})`);
           }
-          if (typeof field.default === 'object') {
+
+          if(Array.isArray(field.default)) {
+            directives.push(`${mappedDirectiveValue}([${field.default.toString()}])`)
+          }
+
+          else if (typeof field.default === 'object') {
             // Output of this template is, for example, @default(now())
             directives.push(
               `${mappedDirectiveValue}(${
@@ -343,6 +350,7 @@ export default class ModelGenerator
               }(${(field.default as FieldDefault).args.join(',')}))`
             );
           }
+
         } else {
           directives.push(mappedDirectiveValue);
         }
