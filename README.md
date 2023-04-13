@@ -9,7 +9,7 @@ Automatically generate a reference from your Prisma Schema. This package contain
 1. Install this package using:
 
 ```shell
-npm install prisma-docs-generator
+npm install -D prisma-docs-generator
 ```
 
 2. Add the generator to the schema
