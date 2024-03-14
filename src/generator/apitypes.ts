@@ -33,9 +33,9 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
   ): string {
     return `
     <tr>
-      <td class="px-4 py-2 border">
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
         ${field.name} </td>
-      <td class="px-4 py-2 border">
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
         ${field.type
           .map((f) =>
             isScalarType(f.type as string)
@@ -47,7 +47,7 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
           .join(' | ')}
       </td>
 
-      <td class="px-4 py-2 border">
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
         ${field.nullable ? '<strong>Yes</strong>' : 'No'}
       </td>
     </tr>
@@ -57,15 +57,15 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
   getTypeHTML(type: TGType, kind: 'inputType' | 'outputType'): string {
     return `
       <div>
-        <h3 class="mb-2 text-xl" id="type-${kind}-${type.name}">${
+        <h3 class="mb-2 text-xl text-black dark:text-white" id="type-${kind}-${type.name}">${
       type.name
     }</h3>
         <table class="table-auto">
           <thead>
             <tr>
-              <th class="px-4 py-2 border">Name</th>
-              <th class="px-4 py-2 border">Type</th>
-              <th class="px-4 py-2 border">Nullable</th>
+              <th class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">Name</th>
+              <th class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">Type</th>
+              <th class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">Nullable</th>
             </tr>
           </thead>
           <tbody>
@@ -80,10 +80,10 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
 
   toHTML() {
     return `<div>
-    <h1 class="text-3xl" id="types">Types</h1>
+    <h1 class="text-3xl dark:text-white" id="types">Types</h1>
         <div>
           <div class="ml-4">
-            <h3 class="mb-2 text-2xl font-normal" id="input-types">Input Types</h3>
+            <h3 class="mb-2 text-2xl font-normal" id="input-types dark:text-white">Input Types</h3>
             <div class="ml-4">
               ${this.data.inputTypes
                 .map((inputType) => this.getTypeHTML(inputType, 'inputType'))
