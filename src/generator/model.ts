@@ -105,7 +105,7 @@ export default class ModelGenerator
            : `<a href="#type-outputType-${field.bareTypeName}">${field.type}</a>`
        }
       </td>
-      <td class="px-4 py-2 border dark:border-gray-400">
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
         <ul class="text-black dark:text-white">
           ${
             field.directives.length > 0
@@ -157,10 +157,10 @@ export default class ModelGenerator
                         ?.map(
                           (opK) => `
                       <tr>
-                        <td class="px-4 py-2 border dark:text-white dark:border-gray-400"">
+                        <td class="px-4 py-2 border dark:text-white dark:border-gray-400">
                           ${opK.name}
                         </td>
-                        <td class="px-4 py-2 border dark:text-white dark:border-gray-400"">
+                        <td class="px-4 py-2 border dark:text-white dark:border-gray-400">
                         ${opK.types
                           .map((t) =>
                             isScalarType(t.type as string)
@@ -171,7 +171,7 @@ export default class ModelGenerator
                           )
                           .join(' | ')}
                         </td>
-                        <td class="px-4 py-2 border dark:text-white dark:border-gray-400"">
+                        <td class="px-4 py-2 border dark:text-white dark:border-gray-400">
                          ${opK.required ? '<strong>Yes</strong>' : 'No'} 
                         </td>
                       </tr>

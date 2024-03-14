@@ -48,7 +48,7 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
             <li class="mb-4">
                 ${this.getTOCSubHeaderHTML(model.name)}
                   <div class="mt-1 ml-2">
-                    <div class="mb-1 font-medium text-gray-600"><a href="#model-${
+                    <div class="mb-1 font-medium text-gray-600 dark:text-white"><a href="#model-${
                       model.name
                     }-fields" class="dark:text-gray-200">Fields</a></div>
                       <ul class="pl-3 ml-1 border-l-2 border-gray-400 dark:text-white">
@@ -60,7 +60,7 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
                       </ul>
                   </div>
                   <div class="mt-2 ml-2">
-                    <div class="mb-1 font-medium text-gray-600"><a href="#model-${
+                    <div class="mb-1 font-medium text-gray-600 dark:text-white"><a href="#model-${
                       model.name
                     }-operations" class="dark:text-gray-200">Operations</a></div>
                     <ul class="pl-3 ml-1 border-l-2 border-gray-400 dark:text-white">
