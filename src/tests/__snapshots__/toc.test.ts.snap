@@ -23,13 +23,13 @@ exports[`TOC renders on toHTML 1`] = `
     </div>
    
                   <div class="mt-1 ml-2">
-                    <div class="mb-1 font-medium text-gray-600"><a href="#model-Post-fields" class="dark:text-gray-200">Fields</a></div>
+                    <div class="mb-1 font-medium text-gray-600 dark:text-white"><a href="#model-Post-fields" class="dark:text-gray-200">Fields</a></div>
                       <ul class="pl-3 ml-1 border-l-2 border-gray-400 dark:text-white">
                       <li><a href="#model-Post-id" class="dark:text-white">id</a></li><li><a href="#model-Post-name" class="dark:text-white">name</a></li>
                       </ul>
                   </div>
                   <div class="mt-2 ml-2">
-                    <div class="mb-1 font-medium text-gray-600"><a href="#model-Post-operations" class="dark:text-gray-200">Operations</a></div>
+                    <div class="mb-1 font-medium text-gray-600 dark:text-white"><a href="#model-Post-operations" class="dark:text-gray-200">Operations</a></div>
                     <ul class="pl-3 ml-1 border-l-2 border-gray-400 dark:text-white">
                     <li><a href="#model-Post-findUnique" class="dark:text-white">findUnique</a></li><li><a href="#model-Post-findFirst" class="dark:text-white">findFirst</a></li><li><a href="#model-Post-findMany" class="dark:text-white">findMany</a></li><li><a href="#model-Post-create" class="dark:text-white">create</a></li><li><a href="#model-Post-delete" class="dark:text-white">delete</a></li><li><a href="#model-Post-update" class="dark:text-white">update</a></li><li><a href="#model-Post-deleteMany" class="dark:text-white">deleteMany</a></li><li><a href="#model-Post-updateMany" class="dark:text-white">updateMany</a></li><li><a href="#model-Post-upsert" class="dark:text-white">upsert</a></li>
                     </ul>
@@ -43,13 +43,13 @@ exports[`TOC renders on toHTML 1`] = `
     </div>
    
                   <div class="mt-1 ml-2">
-                    <div class="mb-1 font-medium text-gray-600"><a href="#model-User-fields" class="dark:text-gray-200">Fields</a></div>
+                    <div class="mb-1 font-medium text-gray-600 dark:text-white"><a href="#model-User-fields" class="dark:text-gray-200">Fields</a></div>
                       <ul class="pl-3 ml-1 border-l-2 border-gray-400 dark:text-white">
                       <li><a href="#model-User-userId" class="dark:text-white">userId</a></li><li><a href="#model-User-something" class="dark:text-white">something</a></li>
                       </ul>
                   </div>
                   <div class="mt-2 ml-2">
-                    <div class="mb-1 font-medium text-gray-600"><a href="#model-User-operations" class="dark:text-gray-200">Operations</a></div>
+                    <div class="mb-1 font-medium text-gray-600 dark:text-white"><a href="#model-User-operations" class="dark:text-gray-200">Operations</a></div>
                     <ul class="pl-3 ml-1 border-l-2 border-gray-400 dark:text-white">
                     <li><a href="#model-User-findUnique" class="dark:text-white">findUnique</a></li><li><a href="#model-User-findFirst" class="dark:text-white">findFirst</a></li><li><a href="#model-User-findMany" class="dark:text-white">findMany</a></li><li><a href="#model-User-create" class="dark:text-white">create</a></li><li><a href="#model-User-delete" class="dark:text-white">delete</a></li><li><a href="#model-User-update" class="dark:text-white">update</a></li><li><a href="#model-User-deleteMany" class="dark:text-white">deleteMany</a></li><li><a href="#model-User-updateMany" class="dark:text-white">updateMany</a></li><li><a href="#model-User-upsert" class="dark:text-white">upsert</a></li>
                     </ul>
