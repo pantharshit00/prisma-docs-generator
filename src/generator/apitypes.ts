@@ -91,7 +91,7 @@ class TypesGenerator implements Generatable<TypesGeneratorStructure> {
             </div>
           </div>
           <div class="ml-4">
-            <h3 class="mb-2 text-2xl font-normal" id="output-types">Output Types</h3>
+            <h3 class="mb-2 text-2xl font-normal dark:text-white" id="output-types">Output Types</h3>
             <div class="ml-4">
               ${this.data.outputTypes
                 .map((outputType) => this.getTypeHTML(outputType, 'outputType'))
