@@ -89,10 +89,10 @@ export default class HTMLPrinter implements Generatable<DMMFDocument> {
   <head>
     ${this.getHead('styles/main.css')}
   </head>
-  <body class="bg-gray-200 dark:bg-black">
+  <body class="bg-gray-200 dark:bg-gray-800">
     <div class="flex min-h-screen">
       <div
-        class="sticky top-0 w-1/5 flex-shrink-0 h-screen p-4 px-6 overflow-auto bg-white dark:bg-black mac-h-screen"
+        class="sticky top-0 w-1/5 flex-shrink-0 h-screen p-4 px-6 overflow-auto bg-white dark:bg-gray-800 mac-h-screen"
       >
         <div class="mb-8">
           ${this.getPrismaSvg()}
