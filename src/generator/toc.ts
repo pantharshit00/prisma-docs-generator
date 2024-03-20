@@ -27,20 +27,20 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
 
   getTOCSubHeaderHTML(name: string): string {
     return `
-    <div class="font-semibold text-gray-700">
+    <div class="font-semibold text-gray-700 dark:text-white">
       <a href="#model-${name}">${name}</a>
     </div>
    `;
   }
 
   getSubFieldHTML(identifier: string, root: string, field: string): string {
-    return `<li><a href="#${identifier}-${root}-${field}">${field}</a></li>`;
+    return `<li><a href="#${identifier}-${root}-${field}" class="dark:text-white">${field}</a></li>`;
   }
 
   toHTML() {
     return `
         <div>
-          <h5 class="mb-2 font-bold"><a href="#models">Models</a></h5>
+          <h5 class="mb-2 font-bold dark:text-white"><a href="#models">Models</a></h5>
           <ul class="mb-2 ml-1">
               ${this.data.models
                 .map(
@@ -48,10 +48,10 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
             <li class="mb-4">
                 ${this.getTOCSubHeaderHTML(model.name)}
                   <div class="mt-1 ml-2">
-                    <div class="mb-1 font-medium text-gray-600"><a href="#model-${
+                    <div class="mb-1 font-medium text-gray-600 dark:text-white"><a href="#model-${
                       model.name
-                    }-fields">Fields</a></div>
-                      <ul class="pl-3 ml-1 border-l-2 border-gray-400">
+                    }-fields" class="dark:text-gray-200">Fields</a></div>
+                      <ul class="pl-3 ml-1 border-l-2 border-gray-400 dark:text-white">
                       ${model.fields
                         .map((field) =>
                           this.getSubFieldHTML('model', model.name, field)
@@ -60,10 +60,10 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
                       </ul>
                   </div>
                   <div class="mt-2 ml-2">
-                    <div class="mb-1 font-medium text-gray-600"><a href="#model-${
+                    <div class="mb-1 font-medium text-gray-600 dark:text-white"><a href="#model-${
                       model.name
-                    }-operations">Operations</a></div>
-                    <ul class="pl-3 ml-1 border-l-2 border-gray-400">
+                    }-operations" class="dark:text-gray-200">Operations</a></div>
+                    <ul class="pl-3 ml-1 border-l-2 border-gray-400 dark:text-white">
                     ${model.operations
                       .map((op) =>
                         this.getSubFieldHTML('model', model.name, op)
@@ -76,13 +76,13 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
                 )
                 .join('')}
             </ul>
-          <h5 class="mt-12 mb-2 font-bold"><a href="#types">Types</a></h5>
+          <h5 class="mt-12 mb-2 font-bold dark:text-white"><a href="#types">Types</a></h5>
           <ul class="mb-2 ml-1">
             <li class="mb-4">
-              <div class="font-semibold text-gray-700">
+              <div class="font-semibold text-gray-700 dark:text-white">
                 <a href="#input-types">Input Types</a>
               </div>
-              <ul class="pl-3 ml-1 border-l-2 border-gray-400">
+              <ul class="pl-3 ml-1 border-l-2 border-gray-400 dark:text-white">
               ${this.data.types.inputTypes
                 .map((inputType) =>
                   this.getSubFieldHTML('type', 'inputType', inputType)
@@ -91,10 +91,10 @@ export default class TOCGenerator implements Generatable<TOCStructure> {
               </ul>
             </li>
             <li class="mb-4">
-              <div class="font-semibold text-gray-700">
+              <div class="font-semibold text-gray-700 dark:text-white">
                 <a href="#output-types">Output Types</a>
               </div>
-              <ul class="pl-3 ml-1 border-l-2 border-gray-400">
+              <ul class="pl-3 ml-1 border-l-2 border-gray-400 dark:text-white">
               ${this.data.types.outputTypes
                 .map((outputType) =>
                   this.getSubFieldHTML('type', 'outputType', outputType)

@@ -80,12 +80,12 @@ export default class ModelGenerator
   getModelDiretiveHTML(directive: MGModelDirective): string {
     return `
       <tr>
-        <td class="px-4 py-2 border">
-         <strong>${directive.name}</strong>
+        <td class="px-4 py-2 border dark:border-gray-400">
+         <strong class="text-dark dark:text-white">${directive.name}</strong>
         </td>
 
-        <td class="px-4 py-2 border"> <ul>
-            ${directive.values.map((val) => `<li>${val}</li>`).join('')}
+        <td class="px-4 py-2 border dark:border-gray-400"> <ul>
+            ${directive.values.map((val) => `<li class="text-dark dark:text-white">${val}</li>`).join('')}
           </ul>
         </td>
       </tr>
@@ -95,18 +95,18 @@ export default class ModelGenerator
   getModelFieldTableRow(field: MGModelField, modelName: string): string {
     return `
     <tr id="${`model-${modelName}-${field.name}`}">
-      <td class="px-4 py-2 border">
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
        ${field.name} 
       </td>
-      <td class="px-4 py-2 border">
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
        ${
          isScalarType(field.bareTypeName)
            ? field.type
            : `<a href="#type-outputType-${field.bareTypeName}">${field.type}</a>`
        }
       </td>
-      <td class="px-4 py-2 border">
-        <ul>
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
+        <ul class="text-black dark:text-white">
           ${
             field.directives.length > 0
               ? field.directives
@@ -116,10 +116,10 @@ export default class ModelGenerator
           }
         </ul>
       </td>
-      <td class="px-4 py-2 border">
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
         ${field.required ? `<strong>Yes</strong>` : 'No'}
       </td>
-      <td class="px-4 py-2 border">
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
         ${field.documentation ?? '-'}
       </td>
     </tr>
@@ -132,10 +132,10 @@ export default class ModelGenerator
   ): string {
     return `
                 <div class="mt-4">
-                  <h4 id="${`model-${modelName}-${operation.name}`}" class="mb-2 text-lg font-bold">${
+                  <h4 id="${`model-${modelName}-${operation.name}`}" class="mb-2 text-lg font-bold dark:text-white">${
       operation.name
     }</h4>
-                  <p>${operation.description}</p>
+                  <p class="text-black dark:text-white">${operation.description}</p>
                   <div class="mb-2">
                     <pre
                       class="language-markup"
@@ -143,13 +143,13 @@ export default class ModelGenerator
                       operation.usage
                     }</code></pre>
                   </div>
-                  <h4 class="text-lg mb-2">Input</h4>
+                  <h4 class="text-lg mb-2 text-black dark:text-white">Input</h4>
                   <table class="table-auto mb-2">
                     <thead>
                       <tr>
-                        <th class="px-4 py-2 border">Name</th>
-                        <th class="px-4 py-2 border">Type</th>
-                        <th class="px-4 py-2 border">Required</th>
+                        <th class="px-4 py-2 border dark:text-white dark:border-gray-400">Name</th>
+                        <th class="px-4 py-2 border dark:text-white dark:border-gray-400">Type</th>
+                        <th class="px-4 py-2 border dark:text-white dark:border-gray-400">Required</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -157,21 +157,21 @@ export default class ModelGenerator
                         ?.map(
                           (opK) => `
                       <tr>
-                        <td class="px-4 py-2 border">
+                        <td class="px-4 py-2 border dark:text-white dark:border-gray-400">
                           ${opK.name}
                         </td>
-                        <td class="px-4 py-2 border">
+                        <td class="px-4 py-2 border dark:text-white dark:border-gray-400">
                         ${opK.types
                           .map((t) =>
                             isScalarType(t.type as string)
                               ? t.type
-                              : `<a href="#type-inputType-${t.type}">${t.type}${
+                              : `<a href="#type-inputType-${t.type}" class="dark:text-white">${t.type}${
                                   t.isList ? '[]' : ''
                                 }</a>`
                           )
                           .join(' | ')}
                         </td>
-                        <td class="px-4 py-2 border">
+                        <td class="px-4 py-2 border dark:text-white dark:border-gray-400">
                          ${opK.required ? '<strong>Yes</strong>' : 'No'} 
                         </td>
                       </tr>
@@ -180,13 +180,13 @@ export default class ModelGenerator
                         .join('')}
                     </tbody>
                   </table>
-                  <h4 class="text-lg mb-2">Output</h4>
-                  <div><strong>Type: </strong> <a href="#type-outputType-${
+                  <h4 class="text-lg mb-2 text-black dark:text-white">Output</h4>
+                  <div class="text-dark dark:text-white"><strong>Type: </strong> <a href="#type-outputType-${
                     operation.output.type
                   }">${operation.output.type}</a></div>
-                  <div><strong>Required: </strong>
+                  <div class="text-dark dark:text-white"><strong>Required: </strong>
                   ${operation.output.required ? `Yes` : `No`}</div>
-                  <div><strong>List: </strong>
+                  <div class="text-dark dark:text-white"><strong>List: </strong>
                   ${operation.output.list ? `Yes` : `No`}</div>
               </div>
     `;
@@ -197,15 +197,15 @@ export default class ModelGenerator
 
     return `
         <div class="mb-8">
-          <h1 class="text-3xl text-gray-800" id="models">Models</h1>
+          <h1 class="text-3xl text-gray-800 dark:text-white" id="models">Models</h1>
             ${this.data.models
               .map(
                 (model) => `
             <div class="px-4 mb-4">
-              <h2 class="text-2xl" id="model-${model.name}">${model.name}</h2>
+              <h2 class="text-2xl text-black dark:text-white" id="model-${model.name}">${model.name}</h2>
               ${
                 model.documentation
-                  ? `<div class="mb-2">Description: ${model.documentation}</div>`
+                  ? `<div class="mb-2 text-black dark:text-white">Description: ${model.documentation}</div>`
                   : ''
               }
               ${
@@ -214,8 +214,8 @@ export default class ModelGenerator
               <table class="table-auto">
                 <thead>
                   <tr>
-                    <th class="px-4 py-2 border">Name</th>
-                    <th class="px-4 py-2 border">Value</th>
+                    <th class="px-4 py-2 border dark:text-white dark:border-gray-400">Name</th>
+                    <th class="px-4 py-2 border dark:text-white dark:border-gray-400">Value</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -228,18 +228,18 @@ export default class ModelGenerator
                   : ''
               }
               <div class="px-4 mt-4">
-                <h3 class="mb-2 text-xl" id="model-${
+                <h3 class="mb-2 text-xl text-black dark:text-white" id="model-${
                   model.name
                 }-fields">Fields</h3>
                 <div class="px-2 mb-4">
                   <table class="table-auto">
                     <thead>
                       <tr>
-                        <th class="px-4 py-2 border">Name</th>
-                        <th class="px-4 py-2 border">Type</th>
-                        <th class="px-4 py-2 border">Attributes</th>
-                        <th class="px-4 py-2 border">Required</th>
-                        <th class="px-4 py-2 border">Comment</th>
+                        <th class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">Name</th>
+                        <th class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">Type</th>
+                        <th class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">Attributes</th>
+                        <th class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">Required</th>
+                        <th class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">Comment</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -254,13 +254,13 @@ export default class ModelGenerator
             </div>
             <hr class="my-8">
               <div class="px-4 mt-4">
-                <h3 class="mb-2 text-xl" id="model-${
+                <h3 class="mb-2 text-xl dark:text-white" id="model-${
                   model.name
                 }-operations">Operations</h3>
                 <div class="px-2 mb-4">
                   ${model.operations
                     .map((op) => this.getModelOperationMarkup(op, model.name))
-                    .join(`<hr class="my-4">`)}
+                    .join(`<hr class="my-4 dark:text-white">`)}
                 </div>
             </div>
           </div>

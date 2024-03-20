@@ -3,12 +3,12 @@
 exports[`model generator renders model directive html correctly 1`] = `
 "
       <tr>
-        <td class="px-4 py-2 border">
-         <strong>@@id</strong>
+        <td class="px-4 py-2 border dark:border-gray-400">
+         <strong class="text-dark dark:text-white">@@id</strong>
         </td>
 
-        <td class="px-4 py-2 border"> <ul>
-            <li>name</li><li>id</li>
+        <td class="px-4 py-2 border dark:border-gray-400"> <ul>
+            <li class="text-dark dark:text-white">name</li><li class="text-dark dark:text-white">id</li>
           </ul>
         </td>
       </tr>
@@ -18,21 +18,21 @@ exports[`model generator renders model directive html correctly 1`] = `
 exports[`model generator renders model field table row correctly 1`] = `
 "
     <tr id="model-Post-title">
-      <td class="px-4 py-2 border">
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
        title 
       </td>
-      <td class="px-4 py-2 border">
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
        String?
       </td>
-      <td class="px-4 py-2 border">
-        <ul>
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
+        <ul class="text-black dark:text-white">
           <li> - </li>
         </ul>
       </td>
-      <td class="px-4 py-2 border">
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
         No
       </td>
-      <td class="px-4 py-2 border">
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
         -
       </td>
     </tr>
@@ -42,21 +42,21 @@ exports[`model generator renders model field table row correctly 1`] = `
 exports[`model generator renders model field table row correctly 2`] = `
 "
     <tr id="model-User-email">
-      <td class="px-4 py-2 border">
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
        email 
       </td>
-      <td class="px-4 py-2 border">
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
        String
       </td>
-      <td class="px-4 py-2 border">
-        <ul>
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
+        <ul class="text-black dark:text-white">
           <li> - </li>
         </ul>
       </td>
-      <td class="px-4 py-2 border">
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
         <strong>Yes</strong>
       </td>
-      <td class="px-4 py-2 border">
+      <td class="px-4 py-2 border text-black dark:text-white dark:border-gray-400">
         This is some docs
       </td>
     </tr>
@@ -66,43 +66,43 @@ exports[`model generator renders model field table row correctly 2`] = `
 exports[`model generator renders model operation html correctly 1`] = `
 "
                 <div class="mt-4">
-                  <h4 id="model-User-findOne" class="mb-2 text-lg font-bold">findOne</h4>
-                  <p>Find zero or one user</p>
+                  <h4 id="model-User-findOne" class="mb-2 text-lg font-bold dark:text-white">findOne</h4>
+                  <p class="text-black dark:text-white">Find zero or one user</p>
                   <div class="mb-2">
                     <pre
                       class="language-markup"
                     ><code class=" language-javascript">Example usage</code></pre>
                   </div>
-                  <h4 class="text-lg mb-2">Input</h4>
+                  <h4 class="text-lg mb-2 text-black dark:text-white">Input</h4>
                   <table class="table-auto mb-2">
                     <thead>
                       <tr>
-                        <th class="px-4 py-2 border">Name</th>
-                        <th class="px-4 py-2 border">Type</th>
-                        <th class="px-4 py-2 border">Required</th>
+                        <th class="px-4 py-2 border dark:text-white dark:border-gray-400">Name</th>
+                        <th class="px-4 py-2 border dark:text-white dark:border-gray-400">Type</th>
+                        <th class="px-4 py-2 border dark:text-white dark:border-gray-400">Required</th>
                       </tr>
                     </thead>
                     <tbody>
                       
                       <tr>
-                        <td class="px-4 py-2 border">
+                        <td class="px-4 py-2 border dark:text-white dark:border-gray-400">
                           where
                         </td>
-                        <td class="px-4 py-2 border">
-                        <a href="#type-inputType-UserWhereInput">UserWhereInput</a>
+                        <td class="px-4 py-2 border dark:text-white dark:border-gray-400">
+                        <a href="#type-inputType-UserWhereInput" class="dark:text-white">UserWhereInput</a>
                         </td>
-                        <td class="px-4 py-2 border">
+                        <td class="px-4 py-2 border dark:text-white dark:border-gray-400">
                          No 
                         </td>
                       </tr>
                       
                     </tbody>
                   </table>
-                  <h4 class="text-lg mb-2">Output</h4>
-                  <div><strong>Type: </strong> <a href="#type-outputType-User">User</a></div>
-                  <div><strong>Required: </strong>
+                  <h4 class="text-lg mb-2 text-black dark:text-white">Output</h4>
+                  <div class="text-dark dark:text-white"><strong>Type: </strong> <a href="#type-outputType-User">User</a></div>
+                  <div class="text-dark dark:text-white"><strong>Required: </strong>
                   Yes</div>
-                  <div><strong>List: </strong>
+                  <div class="text-dark dark:text-white"><strong>List: </strong>
                   No</div>
               </div>
     "
